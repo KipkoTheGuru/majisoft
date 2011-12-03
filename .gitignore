@@ -1,0 +1,36 @@
+syntax: glob
+
+# Compiled Python modules
+
+*.pyo
+*.pyc
+*.svn
+
+# Emacs
+
+*~
+*\#
+
+# SQLite
+
+*.db
+*.s3db
+	
+# Aptana / Eclipse
+
+.project
+.pydevproject
+.settings
+
+# Per-dev files
+
+settings_local.py
+
+# Mercurial backup files
+
+*.orig
+*.rej
+
+# pip 
+
+build/*

@@ -1,0 +1,30 @@
+{% load i18n %}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:ng="http://angularjs.org" ng:controller="AppCntl">
+	<head>
+	    <title>{% block title %}{% endblock %}</title>
+	    
+	    <meta name="robots" content="{% block robots %}index,follow{% endblock %}"/>
+		<meta name="keywords" content="{% block keywords %}myorder ordering made easy{% endblock %}" />
+		<meta name="description" content="{% block description %}myorder ordering made easy{% endblock %}" />
+
+	    {% block extracss %}{% endblock %}
+		{% block extrajs %}{% endblock %}
+	</head>
+	<body>
+		<div class="content">
+			{% block content %}
+				<div id="header">{% block header %}{% endblock %}<hr /></div>
+				<div id="content">
+					{% block id_content %}
+						<div id="leftBox">{% block leftBox %}{% endblock %}</div>
+						<div id="sidebar" class="rightBoxes">{% block rightBox %}{% endblock %}</div>
+					{% endblock %}
+				</div>
+				<br class="clearFix" /><hr /></div>
+				<div id="footerWrap"><div id="footer">{% block footer %}{% endblock %}<br class="clearFix" /></div></div>
+			{% endblock %}
+		</div>
+	</body>
+</html>
