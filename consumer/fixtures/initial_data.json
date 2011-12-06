@@ -1,0 +1,53 @@
+[
+  {
+    "pk": 1, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "phone_number": "+254734524323", 
+      "first_name": "Justus", 
+      "last_name": "Matanda", 
+      "consumer_type": 1, 
+      "postal_address": "30177 Nairobi", 
+      "title": 1, 
+      "name_of_company": "Kenya Power", 
+      "national_id": "99963820", 
+      "sur_name": "Kanjiru", 
+      "nature_of_business": "Electricity"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "consumer.title", 
+    "fields": {
+      "name": "Mr."
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "consumer.title", 
+    "fields": {
+      "name": "Dr."
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "consumer.application", 
+    "fields": {
+      "consumer": 1, 
+      "approved": true, 
+      "landlord": 1, 
+      "date_received": "2011-12-03 12:37:07"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "national_id": "32232524", 
+      "first_name": "Jim", 
+      "last_name": "Kariuki", 
+      "sur_name": "Karani", 
+      "postal_address": "4232 Kisumu"
+    }
+  }
+]

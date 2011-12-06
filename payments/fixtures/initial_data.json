@@ -1,0 +1,64 @@
+[
+  {
+    "pk": 1, 
+    "model": "payments.invoice", 
+    "fields": {
+      "date": "2011-12-03 14:58:33", 
+      "balance": "0", 
+      "account": 1, 
+      "total": "900"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "payments.invoicedetail", 
+    "fields": {
+      "invoice_id": 1, 
+      "fee": "900", 
+      "quantity": 1, 
+      "fee_type": 1
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "payments.feetype", 
+    "fields": {
+      "fee": "900", 
+      "name": "Connection Fee", 
+      "description": "Fee charged for requesting a new connection"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "payments.feetype", 
+    "fields": {
+      "fee": "1200", 
+      "name": "Reconnection Fee", 
+      "description": "Fee charged for reconnecting an inactive meter"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "payments.paymentmode", 
+    "fields": {
+      "name": "Cheque", 
+      "description": "Payment by cheque"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "payments.paymentmode", 
+    "fields": {
+      "name": "Cash", 
+      "description": "Physical payment by cash"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "payments.paymentmode", 
+    "fields": {
+      "name": "M-Pesa", 
+      "description": "Mobile Payment"
+    }
+  }
+]

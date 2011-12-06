@@ -1,30 +1,82 @@
-{% load i18n %}
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" xmlns:ng="http://angularjs.org" ng:controller="AppCntl">
-	<head>
-	    <title>{% block title %}{% endblock %}</title>
-	    
-	    <meta name="robots" content="{% block robots %}index,follow{% endblock %}"/>
-		<meta name="keywords" content="{% block keywords %}myorder ordering made easy{% endblock %}" />
-		<meta name="description" content="{% block description %}myorder ordering made easy{% endblock %}" />
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	    {% block extracss %}{% endblock %}
-		{% block extrajs %}{% endblock %}
-	</head>
-	<body>
-		<div class="content">
-			{% block content %}
-				<div id="header">{% block header %}{% endblock %}<hr /></div>
-				<div id="content">
-					{% block id_content %}
-						<div id="leftBox">{% block leftBox %}{% endblock %}</div>
-						<div id="sidebar" class="rightBoxes">{% block rightBox %}{% endblock %}</div>
-					{% endblock %}
-				</div>
-				<br class="clearFix" /><hr /></div>
-				<div id="footerWrap"><div id="footer">{% block footer %}{% endblock %}<br class="clearFix" /></div></div>
-			{% endblock %}
-		</div>
-	</body>
+{% block head_css %}
+<link href="{{ MEDIA_URL }}css/common.css" type="text/css" rel="stylesheet"/>
+{% endblock head_css %}
+
+<title>Majisoft</title>
+</head>
+<body>
+	<div class="header">
+    	<a href="index.html" style="text-decoration:none;"><img src="{{ MEDIA_URL }}images/logo.png" /></a>
+        <div class="header-details">
+        	<ul>
+                <li><a href="#">Log-out</a></li>
+                <li> &nbsp | &nbsp </li>
+                <li><a href="#"> Manage Account</a> </li> 
+                <li> &nbsp | &nbsp </li>
+                <li><a> Welcome Eric </a> </li>        
+            </ul>
+        </div>
+        <div style="background-color:#009FC2; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;">
+            <div class="navigation">
+                <li><a href="#">Customers</a></li>
+                <li><a href="#">Billing</a></li>
+                <li><a href="#">Readings</a></li>
+                <li><a href="#">Reports</a></li>
+                <li><a href="#">Users</a></li>
+                <li><a href="#">Configuration</a></li>
+            </div>
+        </div>
+    </div>
+    <div class="content">
+        <div class="main-content">
+        	<div class="main-col">
+            <div>
+            	<div align="center" class="widget" style="width:595px; font-weight:bold; margin-bottom:5px;"><a>New Customers</a></div>
+            	<table width="595">
+                  <tr class="table-header">
+                    <th width="230" scope="col"><div align="left">Customer</div></th>
+                    <th width="187" scope="col">Consumer Type</th>
+                    <th width="160" scope="col">Region</th>
+                  </tr>
+                  <tr>
+                    <td><a href="#">Eric Kitur</a></td>
+                    <td><div align="center">Domestic</div></td>
+                    <td><div align="center"><a href="#">Jericho</a></div></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#">Dani Kihara</a></td>
+                    <td><div align="center">Domestic</div></td>
+                    <td><div align="center"><a href="#">Kibera</a></div></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#">Mungai Hardware</a></td>
+                    <td><div align="center">Corporate</div></td>
+                    <td><div align="center"><a href="#">Kiambu</a></div></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#">Brian Kiprop</a></td>
+                    <td><div align="center">Kiosk</div></td>
+                    <td><div align="center"><a href="#">Kafoca</a></div></td>
+                  </tr>
+                  <tr>
+                    <td><a href="#">Canibal Dogo</a></td>
+                    <td><div align="center">Domestic</div></td>
+                    <td><div align="center"><a href="#">Ngara</a></div></td>
+                  </tr>
+                </table>
+                </div>
+          </div>
+            <div class="right-col">
+            	
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+</body>
 </html>

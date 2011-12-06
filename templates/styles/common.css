@@ -1,0 +1,50 @@
+/* CSS Document */
+body { background: #fff; font-family:"Segoe UI", Calibri, Arial, Verdana; line-height: 18px; -webkit-font-smoothing: antialiased; }
+
+body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,p,blockquote,th,td,hr{margin:0; padding:0;}
+
+h1,h2,h3,h4,h5,h6 {font-size:100%;}
+
+p { line-height: 17px; margin: 0 0 18px; }
+
+table{border:solid; border-color:#3A3A3A; border-spacing:0px; line-height:36px; moz-border-radius:5px; border-radius:5px; -webkit-border-radius:5px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;}
+
+form input.input-text:focus, form textarea:focus { outline: none; border-color: #999; color: #333; padding: 2px 3px; border: 2px solid #2daebf; }
+
+.table-header{background-color:#3A3A3A; color:#FFF;}
+
+.header{height:140px;}
+
+.header-details{float:right; font-size:13px}
+
+.header-details ul{margin-right:10px;}
+
+.header-details li{list-style:none; float:right; }
+
+.header-details li a{color:#009FC2;}
+
+.navigation{top:100px; padding: 7px 6px 0; display:block; list-style-type:none; height:40px; margin-left:auto; margin-right:auto; width:920px;}
+
+.navigation li{margin: 0 5px;padding: 0 0 8px;float: left;position: relative;list-style: none;}
+
+.navigation a{font-weight: bold;color: #FFF;text-decoration: none;display: block;padding:  8px 20px;margin: 0; border-radius: 8px;}
+
+.navigation a:hover{font-weight:bold; color:#009FC2; background-color:#FFF;}
+
+.main-content{width:920px; margin-left:auto; margin-right:auto; min-height:500px; position:relative;}
+
+.widget{width:inherit; background-color:#009FC2; line-height:36px; margin-top:10px; color:#FFF;}
+
+.main-col{width:600px; float:left;}
+
+.right-col{float:right;}
+
+.footer{background-color:#009FC2; height:80px; position:relative;}
+
+.login{width:388px; position:relative; display:block; margin-top:120px; moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; overflow:hidden; border:medium; border-color:#000;}
+
+.login label{font-size:13px;}
+
+.login legend{font-style:italic;}
+
+.button{width:100px; height:30px;}

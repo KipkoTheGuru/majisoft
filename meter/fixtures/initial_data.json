@@ -1,0 +1,35 @@
+[
+  {
+    "pk": 1, 
+    "model": "meter.account", 
+    "fields": {
+      "sewer_connected": true, 
+      "zone": 1, 
+      "is_active": true, 
+      "date_activated": "2011-12-03 14:11:59", 
+      "meter_serial_no": "KJADSOA90320983", 
+      "meter_no": "932042", 
+      "consumer": 1, 
+      "account_no": "ACC89230"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "meter.meterreading", 
+    "fields": {
+      "employee": 1, 
+      "account": 1, 
+      "reading": "12000923", 
+      "reason": "", 
+      "date_recorded": "2011-12-03 14:13:11"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "meter.zone", 
+    "fields": {
+      "name": "Madaraka", 
+      "description": "Region including South C, Nairobi West"
+    }
+  }
+]
