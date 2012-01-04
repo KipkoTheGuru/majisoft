@@ -3,21 +3,37 @@ from django.contrib.auth.models import User
 from consumer.models import Consumer
 from hr.models import Employee
 
+class Meter(models.Model):
+    serial_no = models.CharField(max_length=30)
+    
+    class Meta:
+        db_table = "Meter"
+
 class Account(models.Model):
     account_no = models.CharField(max_length=50)
-    consumer = models.ForeignKey(Consumer)
     zone = models.ForeignKey("Zone")
-    meter_no = models.CharField(max_length=50)
-    meter_serial_no = models.CharField(max_length=50)
+    consumer = models.ForeignKey(Consumer)
+    meter_no = models.ForeignKey(Meter)
+    service_line_diameter = models.DecimalField(max_digits=10, decimal_places=3)
     sewer_connected = models.BooleanField(default=False)
+    refuse = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-    date_activated = models.DateTimeField("Last Date Activated", auto_now_add=True)
+    date_activated = models.DateTimeField("Last Date Activated")
     
     class Meta:
         db_table = "Account"
     
     def __unicode__(self):
         return "%s" % (self.account_no)
+
+class PreviousAccountOwner(models.Model):
+    account_no = models.ForeignKey("Account")
+    previous_owner = models.ForeignKey(Consumer)
+    start_date = models.DateTimeField("Last Date Activated")
+    end_date = models.DateTimeField("Last Date Activated", blank=True, null=True)
+    
+    class Meta:
+        db_table = "PreviousOwner"
 
 class MeterReading(models.Model):
     account = models.ForeignKey(Account)
@@ -37,5 +53,5 @@ class Zone(models.Model):
         db_table = "Zone"
     
     def __unicode__(self):
-        return "%s, %s" % (self.name, self.description)
+        return "%s" % (self.name)
         

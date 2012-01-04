@@ -3,51 +3,106 @@
     "pk": 1, 
     "model": "consumer.consumer", 
     "fields": {
-      "phone_number": "+254734524323", 
-      "first_name": "Justus", 
-      "last_name": "Matanda", 
+      "phone_number": "+254722708988", 
+      "first_name": "Eric", 
       "consumer_type": 1, 
-      "postal_address": "30177 Nairobi", 
+      "postal_address": "P.O. Box 62743", 
       "title": 1, 
-      "name_of_company": "Kenya Power", 
-      "national_id": "99963820", 
-      "sur_name": "Kanjiru", 
-      "nature_of_business": "Electricity"
+      "id_number": "28082650", 
+      "identification_mode": 1, 
+      "other_names": "Kitur", 
+      "surname": "Kipkorir", 
+      "company_name": "", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "kitur.eric@yahoo.com"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "phone_number": "+254723078162", 
+      "first_name": "Joseph", 
+      "consumer_type": 1, 
+      "postal_address": "P.O. Box 62244-00200", 
+      "title": 2, 
+      "id_number": "90320329012", 
+      "identification_mode": 2, 
+      "other_names": "", 
+      "surname": "Sevilla", 
+      "company_name": "", 
+      "nature_of_business": "", 
+      "nationality": "ES", 
+      "email": ""
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "phone_number": "+254722514807", 
+      "first_name": "David", 
+      "consumer_type": 3, 
+      "postal_address": "P.O. Box 62743", 
+      "title": 1, 
+      "id_number": "01209163", 
+      "identification_mode": 1, 
+      "other_names": "Cheruiyot", 
+      "surname": "Kitur", 
+      "company_name": "Microlan Africa Ltd", 
+      "nature_of_business": "Computer and computer accessories vendor", 
+      "nationality": "KE", 
+      "email": "david_kitur@yahoo.com"
     }
   }, 
   {
     "pk": 1, 
     "model": "consumer.title", 
     "fields": {
-      "name": "Mr."
+      "name": "Mr"
     }
   }, 
   {
     "pk": 2, 
     "model": "consumer.title", 
     "fields": {
-      "name": "Dr."
+      "name": "Dr"
     }
   }, 
   {
-    "pk": 1, 
-    "model": "consumer.application", 
+    "pk": 3, 
+    "model": "consumer.title", 
     "fields": {
-      "consumer": 1, 
-      "approved": true, 
-      "landlord": 1, 
-      "date_received": "2011-12-03 12:37:07"
+      "name": "Miss"
     }
   }, 
   {
-    "pk": 1, 
-    "model": "consumer.landlord", 
+    "pk": 4, 
+    "model": "consumer.title", 
     "fields": {
-      "national_id": "32232524", 
-      "first_name": "Jim", 
-      "last_name": "Kariuki", 
-      "sur_name": "Karani", 
-      "postal_address": "4232 Kisumu"
+      "name": "Mrs"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "consumer.title", 
+    "fields": {
+      "name": "Prof"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "consumer.title", 
+    "fields": {
+      "name": "Rev"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "consumer.title", 
+    "fields": {
+      "name": "Bishop"
     }
   }
 ]
