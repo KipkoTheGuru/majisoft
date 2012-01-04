@@ -6,27 +6,25 @@ IDENTIFICATION=(
         (2, 'Passport'),
 )
 
-class Consumer(models.Model):
-    CONSUMER_TYPE=(
-        (1, 'Individual'), 
-        (2, 'Kiosk'),
-        (3, 'Corporate'),
-        (4, 'Institutions'),
-    )
-    
+class Consumer(models.Model): 
     title = models.ForeignKey("Title")
     first_name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
     other_names = models.CharField(max_length=50, blank=True, null = True)
-    phone_number = models.CharField(max_length=50)
+    mobile_no = models.CharField(max_length=50)
+    landline_no = models.CharField('Landline', max_length=50, blank=True, null = True)
     email = models.EmailField(blank=True, null = True)
     postal_address = models.CharField(max_length=100)
+    postal_code = models.CharField(max_length=20, blank=True, null = True)
+    town = models.CharField('Town/City', max_length=50)
+    id_number = models.CharField('National ID/Passport No', max_length=50, unique=True)
     identification_mode = models.SmallIntegerField(choices=IDENTIFICATION)
-    id_number = models.CharField(max_length=50)
+    pin_no = models.CharField(max_length=50)
     nationality = models.CharField(max_length=50, default='KE', choices=countries.COUNTRIES)
-    consumer_type  = models.SmallIntegerField(choices=CONSUMER_TYPE)
+    consumer_type  = models.ForeignKey("ConsumerType")
     company_name = models.CharField(max_length=50, blank=True, null = True)
     nature_of_business = models.TextField(max_length=200, blank=True, null = True)
+    date_registered = models.DateTimeField('Date joined', auto_now_add=True)
     
     class Meta:
         db_table = "Consumer"
@@ -37,10 +35,25 @@ class Consumer(models.Model):
     @property
     def full_name(self):
         return "%s %s, %s %s" % (self.title, self.surname, self.first_name, self.other_names)
+    
+    @property
+    def full_address(self):
+        if self.postal_code:
+            return "%s-%s %s" % (self.postal_address, self.postal_code, self.town)
+        return "%s %s" % (self.postal_address, self.town)
         
     @models.permalink
     def get_absolute_url(self):
         return ("consumer-details", [str(self.pk)])
+
+class ConsumerType(models.Model):
+    consumer_type = models.CharField(max_length=50)
+    
+    class Meta:
+        db_table = "ConsumerType"
+    
+    def __unicode__(self):
+        return "%s." % self.consumer_type
 
 class Title(models.Model):
     name = models.CharField(max_length=50)
@@ -53,25 +66,33 @@ class Title(models.Model):
 
 class Application(models.Model):
     consumer = models.ForeignKey("Consumer")
-    landlord = models.ForeignKey("Landlord")
+    plot_no = models.CharField(max_length=50)
     approved = models.BooleanField(default=False)
     date_received = models.DateTimeField(auto_now_add=True)
     
     class Meta:
         db_table = "Application"
+
+class Plot(models.Model):
+    plot_no = models.CharField(max_length=50)
+    street = models.CharField(max_length=50)
+    landlord = models.ForeignKey("Landlord")
     
+    class Meta:
+        db_table = "Plot"
+
 class Landlord(models.Model):
     first_name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
     other_names = models.CharField(max_length=50, blank=True, null = True)
-    id_number = models.CharField(max_length=50)
+    id_number = models.CharField('National ID/Passport No', max_length=50, unique=True)
     identification_mode = models.SmallIntegerField(choices=IDENTIFICATION)
     nationality = models.CharField(max_length=50, default='KE', choices=countries.COUNTRIES)
     name_of_company = models.CharField(max_length=50, blank=True, null = True)
     pin_no = models.CharField(max_length=50)
     postal_address = models.CharField(max_length=100)
-    plot_no = models.CharField(max_length=50)
-    street = models.CharField(max_length=50)
+    postal_code = models.CharField(max_length=20, blank=True, null = True)
+    town = models.CharField('Town/City', max_length=50)
     
     class Meta:
         db_table = "Landlord"
@@ -83,11 +104,17 @@ class Landlord(models.Model):
     def full_name(self):
         return "%s, %s %s" % (self.surname, self.first_name, self.other_names)
     
+    @property
+    def full_address(self):
+        if self.postal_code:
+            return "%s-%s %s" % (self.postal_address, self.postal_code, self.town)
+        return "%s %s" % (self.postal_address, self.town)
+    
 class Feedback(models.Model):
     FEEDBACK_TYPE=(
         (1, 'Complaint'), 
         (2, 'Suggestion'),
-        (3, 'Query'),
+        (3, 'Enquiry'),
     )
     consumer = models.ForeignKey(Consumer)
     feedback_type  = models.SmallIntegerField(choices=FEEDBACK_TYPE)
@@ -95,4 +122,4 @@ class Feedback(models.Model):
     
     class Meta:
         db_table = "Feedback"
-        
+        verbose_name_plural = "Feedback"
