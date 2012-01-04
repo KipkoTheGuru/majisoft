@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block container %}
+	<div class="header">
+		{% block header %}
+	    	<a href="index.html" style="text-decoration:none;"><img src="{{ MEDIA_URL }}images/logo2.png" /></a>
+	        <div class="header-details">
+        	<ul>
+                <li><a href="#">Log-out</a></li>
+                <li> &nbsp | &nbsp </li>
+                <li><a href="#"> Manage Account</a> </li> 
+                <li> &nbsp | &nbsp </li>
+                <li><a> Welcome Eric </a> </li>        
+            </ul>
+        </div>
+        <div>
+            <div class="navigation shadow">
+            	{% block navigation %}
+	            	<li><a href="#">Home</a></li>
+	                <li>
+	                	<a href="viewconsumer.html">Consumers</a>
+	                    <ul>
+	                    	<li><a href="viewconsumer.html">View Consumers</a></li>
+	                        <li><a href="addconsumer.html">Register Consumers</a></li>
+	                        <li><a href="#">Account application</a></li>
+	                    </ul>
+					</li>
+	                <li><a href="#">Billing</a></li>
+	                <li><a href="#">Readings</a></li>
+	                <li><a href="#">Reports</a></li>
+	                <li><a href="#">Users</a></li>
+	                <li><a href="#">Configuration</a></li>
+                {% endblock navigation%}
+            </div>
+		</div>
+	     {% endblock header %}
+    </div>
+    <div class="breadcrumbs">
+    	{% block breadcrumbs %}
+    	
+    	{% endblock breadcrumbs%}
+	</div>
+    <div class="content">
+    	{% block content %}
+	        <div class="main-content">
+	        	{% block main_content %}
+	        		<div class="left-col">
+	        			{% block left_col %}
+							<div  align="center"><h1 class="widget">Today's date</h1></div>
+			                <div id="calendar">
+			                </div>
+			                <script type="text/javascript">
+								(function($){
+									$('#calendar').datepicker({
+										inline: true,
+									});
+								})(jQuery);
+							</script>
+						{% endblock left_col %}
+		            </div>
+		        	<div class="main-col">
+		        		{% block main_column %}
+		        			{% block module_header %}
+		        			
+		        			{% endblock module_header %}
+				        {% endblock main_column %}
+	          		</div>
+			        <div class="right-col">
+		            	{% block right_column %}
+		            	{% endblock right_column %}
+			        </div>
+			    {% endblock main_content %}
+	        </div>
+	      {% endblock content %}
+    </div>
+    <div class="footer">
+    	{% block footer %}
+    	{% endblock footer %}
+    </div>
+ {% endblock container %}
+ 

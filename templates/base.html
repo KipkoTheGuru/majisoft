@@ -3,80 +3,19 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-{% block head_css %}
 <link href="{{ MEDIA_URL }}css/common.css" type="text/css" rel="stylesheet"/>
-{% endblock head_css %}
+<link type="text/css" href="{{ MEDIA_URL }}css/jquery-ui-1.8.16.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.6.2.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-ui-1.8.16.custom.min.js"></script>
+{% block extracss %}{% endblock extracss %}
+{% block extrajs %}{% endblock extrajs %}
 
-<title>Majisoft</title>
+<title>{% block title %}Majisoft{% endblock %}</title>
 </head>
 <body>
-	<div class="header">
-    	<a href="index.html" style="text-decoration:none;"><img src="{{ MEDIA_URL }}images/logo.png" /></a>
-        <div class="header-details">
-        	<ul>
-                <li><a href="#">Log-out</a></li>
-                <li> &nbsp | &nbsp </li>
-                <li><a href="#"> Manage Account</a> </li> 
-                <li> &nbsp | &nbsp </li>
-                <li><a> Welcome Eric </a> </li>        
-            </ul>
-        </div>
-        <div style="background-color:#009FC2; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;">
-            <div class="navigation">
-                <li><a href="#">Customers</a></li>
-                <li><a href="#">Billing</a></li>
-                <li><a href="#">Readings</a></li>
-                <li><a href="#">Reports</a></li>
-                <li><a href="#">Users</a></li>
-                <li><a href="#">Configuration</a></li>
-            </div>
-        </div>
-    </div>
-    <div class="content">
-        <div class="main-content">
-        	<div class="main-col">
-            <div>
-            	<div align="center" class="widget" style="width:595px; font-weight:bold; margin-bottom:5px;"><a>New Customers</a></div>
-            	<table width="595">
-                  <tr class="table-header">
-                    <th width="230" scope="col"><div align="left">Customer</div></th>
-                    <th width="187" scope="col">Consumer Type</th>
-                    <th width="160" scope="col">Region</th>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Eric Kitur</a></td>
-                    <td><div align="center">Domestic</div></td>
-                    <td><div align="center"><a href="#">Jericho</a></div></td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Dani Kihara</a></td>
-                    <td><div align="center">Domestic</div></td>
-                    <td><div align="center"><a href="#">Kibera</a></div></td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Mungai Hardware</a></td>
-                    <td><div align="center">Corporate</div></td>
-                    <td><div align="center"><a href="#">Kiambu</a></div></td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Brian Kiprop</a></td>
-                    <td><div align="center">Kiosk</div></td>
-                    <td><div align="center"><a href="#">Kafoca</a></div></td>
-                  </tr>
-                  <tr>
-                    <td><a href="#">Canibal Dogo</a></td>
-                    <td><div align="center">Domestic</div></td>
-                    <td><div align="center"><a href="#">Ngara</a></div></td>
-                  </tr>
-                </table>
-                </div>
-          </div>
-            <div class="right-col">
-            	
-            </div>
-        </div>
-    </div>
-    <div class="footer">
-    </div>
+	<div id="container">
+		{% block container %}
+		{% endblock container %}
+	</div>
 </body>
 </html>
