@@ -73,8 +73,8 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .left-col ul li:hover a{background-color:#999999; width:200px; color:#ffffff;}
 
 .right-col ul, .left-col ul{display:block;}
-.left-col ul li a{ margin-left:5px; list-style-type:none; display:inline;}
-
+.right-col ul li, .left-col ul li a{ margin-left:5px; list-style-type:none; display:inline;}
+.right-col ul li img{margin-right:5px;}
 .widget{background-color:#009FC2; color:#ffffff; line-height:28px;}
 
 .module-header{color:#ffffff; background-color:#009FC2; line-height:36px; margin-top: 7px; margin-bottom: 7px;}
@@ -83,7 +83,9 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 
 .footer{background-color:#eeeeee; height:80px; position:relative; border-top:#bbbbbb solid 1px}
 
-.login{width:388px; position:relative; display:block; margin-top:120px; moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; overflow:hidden; border:medium; border-color:#000; background-color:#FFFFFF;}
+.login{width:388px; position:relative; display:block; margin-top:120px; moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px;
+ -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; 
+ moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; overflow:hidden; border:medium; border-color:#000; background-color:#FFFFFF;}
 
 .login label{font-size:13px;}
 
