@@ -66,7 +66,7 @@ class Title(models.Model):
 
 class Application(models.Model):
     consumer = models.ForeignKey("Consumer")
-    plot_no = models.CharField(max_length=50)
+    plot_no = models.ForeignKey("Plot")
     approved = models.BooleanField(default=False)
     date_received = models.DateTimeField(auto_now_add=True)
     
@@ -102,6 +102,7 @@ class Landlord(models.Model):
     
     @property
     def full_name(self):
+        verbose_name = "Consumer / Manager name"
         return "%s, %s %s" % (self.surname, self.first_name, self.other_names)
     
     @property

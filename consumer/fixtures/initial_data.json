@@ -3,57 +3,399 @@
     "pk": 1, 
     "model": "consumer.consumer", 
     "fields": {
-      "phone_number": "+254722708988", 
+      "town": "Nairobi", 
       "first_name": "Eric", 
-      "consumer_type": 1, 
+      "surname": "Kitur", 
       "postal_address": "P.O. Box 62743", 
+      "landline_no": "", 
       "title": 1, 
       "id_number": "28082650", 
-      "identification_mode": 1, 
-      "other_names": "Kitur", 
-      "surname": "Kipkorir", 
       "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Kipkorir", 
+      "date_registered": "2012-01-04 15:29:07", 
+      "pin_no": "A005462392X", 
+      "postal_code": "00200", 
+      "mobile_no": "0729708988", 
       "nature_of_business": "", 
       "nationality": "KE", 
-      "email": "kitur.eric@yahoo.com"
+      "email": "kitur.eric@yahoo.com", 
+      "consumer_type": 1
     }
   }, 
   {
     "pk": 2, 
     "model": "consumer.consumer", 
     "fields": {
-      "phone_number": "+254723078162", 
-      "first_name": "Joseph", 
-      "consumer_type": 1, 
-      "postal_address": "P.O. Box 62244-00200", 
-      "title": 2, 
-      "id_number": "90320329012", 
-      "identification_mode": 2, 
-      "other_names": "", 
-      "surname": "Sevilla", 
+      "town": "Mombasa", 
+      "first_name": "Brenda", 
+      "surname": "Rukenya", 
+      "postal_address": "P.O. Box 804380", 
+      "landline_no": "", 
+      "title": 3, 
+      "id_number": "21938712", 
       "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Nyakio", 
+      "date_registered": "2012-01-04 16:47:57", 
+      "pin_no": "A674390267G", 
+      "postal_code": "", 
+      "mobile_no": "0733789152", 
       "nature_of_business": "", 
-      "nationality": "ES", 
-      "email": ""
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
     }
   }, 
   {
     "pk": 3, 
     "model": "consumer.consumer", 
     "fields": {
-      "phone_number": "+254722514807", 
-      "first_name": "David", 
-      "consumer_type": 3, 
-      "postal_address": "P.O. Box 62743", 
-      "title": 1, 
-      "id_number": "01209163", 
+      "town": "Nairobi", 
+      "first_name": "Sylvia", 
+      "surname": "Murugi", 
+      "postal_address": "P.O. Box 77932", 
+      "landline_no": "0200923789", 
+      "title": 3, 
+      "id_number": "22027831", 
+      "company_name": "Epic Styles Salon", 
       "identification_mode": 1, 
-      "other_names": "Cheruiyot", 
-      "surname": "Kitur", 
-      "company_name": "Microlan Africa Ltd", 
-      "nature_of_business": "Computer and computer accessories vendor", 
+      "other_names": "Njue", 
+      "date_registered": "2012-01-04 16:52:00", 
+      "pin_no": "A870185619Y", 
+      "postal_code": "00200", 
+      "mobile_no": "0712893278", 
+      "nature_of_business": "Salon type business", 
       "nationality": "KE", 
-      "email": "david_kitur@yahoo.com"
+      "email": "", 
+      "consumer_type": 9
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Luke", 
+      "surname": "Nyaencha", 
+      "postal_address": "P.O. Box 794390", 
+      "landline_no": "", 
+      "title": 1, 
+      "id_number": "22002408", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Keango", 
+      "date_registered": "2012-01-04 16:54:09", 
+      "pin_no": "A783016298H", 
+      "postal_code": "00200", 
+      "mobile_no": "0721783078", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Violet", 
+      "surname": "Mwihaki", 
+      "postal_address": "P.O. Box 793002", 
+      "landline_no": "", 
+      "title": 4, 
+      "id_number": "21109867", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Wainana", 
+      "date_registered": "2012-01-04 16:55:53", 
+      "pin_no": "A673893093Y", 
+      "postal_code": "", 
+      "mobile_no": "0729010671", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Elizabeth", 
+      "surname": "Mumbi", 
+      "postal_address": "P.O. Box 794387", 
+      "landline_no": "", 
+      "title": 3, 
+      "id_number": "21906712", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Ndegwa", 
+      "date_registered": "2012-01-04 16:57:01", 
+      "pin_no": "A789302109G", 
+      "postal_code": "00300", 
+      "mobile_no": "0710783109", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Marsabit", 
+      "first_name": "Sakuu", 
+      "surname": "Jillo", 
+      "postal_address": "P.O. Box 78924", 
+      "landline_no": "", 
+      "title": 3, 
+      "id_number": "21387012", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Jarso", 
+      "date_registered": "2012-01-04 16:58:47", 
+      "pin_no": "A972409194P", 
+      "postal_code": "", 
+      "mobile_no": "0718789209", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Reinhard", 
+      "surname": "Njogu", 
+      "postal_address": "P.O. Box 74831", 
+      "landline_no": "", 
+      "title": 1, 
+      "id_number": "20984367", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Kabugi", 
+      "date_registered": "2012-01-04 16:59:58", 
+      "pin_no": "A298429017M", 
+      "postal_code": "", 
+      "mobile_no": "0717809172", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Kakamega", 
+      "first_name": "James", 
+      "surname": "Ngorre", 
+      "postal_address": "P.O. Box 28939", 
+      "landline_no": "", 
+      "title": 1, 
+      "id_number": "20861789", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Ominde", 
+      "date_registered": "2012-01-04 17:01:38", 
+      "pin_no": "A187349097A", 
+      "postal_code": "", 
+      "mobile_no": "0719678312", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Kakamega", 
+      "first_name": "Dennis", 
+      "surname": "Simiyu", 
+      "postal_address": "P.O. Box 78943", 
+      "landline_no": "", 
+      "title": 5, 
+      "id_number": "21909834", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Kisiang'ani", 
+      "date_registered": "2012-01-04 17:03:45", 
+      "pin_no": "A035890284Q", 
+      "postal_code": "", 
+      "mobile_no": "0732098782", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Moses", 
+      "surname": "Gituku", 
+      "postal_address": "P.O. Box 78392", 
+      "landline_no": "0208930789", 
+      "title": 1, 
+      "id_number": "21780927", 
+      "company_name": "Tuks Industries", 
+      "identification_mode": 1, 
+      "other_names": "Thamu", 
+      "date_registered": "2012-01-04 17:57:13", 
+      "pin_no": "A789492019I", 
+      "postal_code": "", 
+      "mobile_no": "0712567091", 
+      "nature_of_business": "Making Industrial Chemicals", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 7
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Kiambu", 
+      "first_name": "Samuel", 
+      "surname": "Njoroge", 
+      "postal_address": "P.O. Box 734982", 
+      "landline_no": "", 
+      "title": 1, 
+      "id_number": "21378091", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Ndung'u", 
+      "date_registered": "2012-01-04 21:15:35", 
+      "pin_no": "A794209182D", 
+      "postal_code": "", 
+      "mobile_no": "0739089018", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 13, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Josephine", 
+      "surname": "Wanjiku", 
+      "postal_address": "P.O. Box 54801", 
+      "landline_no": "", 
+      "title": 3, 
+      "id_number": "21939118", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Ng'ang'a", 
+      "date_registered": "2012-01-04 21:18:14", 
+      "pin_no": "A973053012K", 
+      "postal_code": "", 
+      "mobile_no": "0719082072", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 14, 
+    "model": "consumer.consumer", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Tabitha", 
+      "surname": "Mbenyi", 
+      "postal_address": "P.O. Box 82920", 
+      "landline_no": "", 
+      "title": 3, 
+      "id_number": "21792018", 
+      "company_name": "", 
+      "identification_mode": 1, 
+      "other_names": "Kimanthi", 
+      "date_registered": "2012-01-04 21:19:43", 
+      "pin_no": "A798435304U", 
+      "postal_code": "", 
+      "mobile_no": "0702780192", 
+      "nature_of_business": "", 
+      "nationality": "KE", 
+      "email": "", 
+      "consumer_type": 1
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Domestic"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Commercial"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Hotel"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Hospital"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Minor Construction"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Large Construction"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Light Industry"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Heavy Industry"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "consumer.consumertype", 
+    "fields": {
+      "consumer_type": "Kiosk"
     }
   }, 
   {
@@ -103,6 +445,237 @@
     "model": "consumer.title", 
     "fields": {
       "name": "Bishop"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Elizabeth", 
+      "surname": "Suwandi", 
+      "postal_address": "P.O. Box 78329", 
+      "identification_mode": 2, 
+      "id_number": "9329329843", 
+      "other_names": "", 
+      "name_of_company": "", 
+      "pin_no": "A893893012L", 
+      "postal_code": "00100", 
+      "nationality": "IN"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Michael", 
+      "surname": "Schumacher", 
+      "postal_address": "P.O. Box 43879", 
+      "identification_mode": 2, 
+      "id_number": "98349834", 
+      "other_names": "", 
+      "name_of_company": "", 
+      "pin_no": "A09431908R", 
+      "postal_code": "", 
+      "nationality": "DE"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Daniel", 
+      "surname": "Pedrosa", 
+      "postal_address": "P.O. Box 783453", 
+      "identification_mode": 2, 
+      "id_number": "89437934", 
+      "other_names": "Ramal", 
+      "name_of_company": "", 
+      "pin_no": "A893034098K", 
+      "postal_code": "00300", 
+      "nationality": "ES"
+    }
+  }, 
+  {
+    "pk": 4, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Allan", 
+      "surname": "Mukuria", 
+      "postal_address": "P.O. Box 78934", 
+      "identification_mode": 1, 
+      "id_number": "21096272", 
+      "other_names": "", 
+      "name_of_company": "", 
+      "pin_no": "A027891256J", 
+      "postal_code": "", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 5, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Eldoret", 
+      "first_name": "Anthony", 
+      "surname": "Rotich", 
+      "postal_address": "P.O. Box 942942", 
+      "identification_mode": 1, 
+      "id_number": "20017826", 
+      "other_names": "", 
+      "name_of_company": "", 
+      "pin_no": "A09347812M", 
+      "postal_code": "", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 6, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Brian", 
+      "surname": "Osoro", 
+      "postal_address": "P.O. Box 980120", 
+      "identification_mode": 1, 
+      "id_number": "22901029", 
+      "other_names": "Maengwe", 
+      "name_of_company": "", 
+      "pin_no": "A894301839U", 
+      "postal_code": "", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 7, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Eldoret", 
+      "first_name": "Doreen", 
+      "surname": "Jeruto", 
+      "postal_address": "P.O. Box 894293", 
+      "identification_mode": 1, 
+      "id_number": "21093672", 
+      "other_names": "Koech", 
+      "name_of_company": "", 
+      "pin_no": "A002890192", 
+      "postal_code": "", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 8, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Ian", 
+      "surname": "Kamande", 
+      "postal_address": "P.O. Box 7829320", 
+      "identification_mode": 1, 
+      "id_number": "21893484", 
+      "other_names": "Charles Gituma", 
+      "name_of_company": "", 
+      "pin_no": "A784309172P", 
+      "postal_code": "00100", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 9, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "James", 
+      "surname": "Mumo", 
+      "postal_address": "P.O. Box 819398", 
+      "identification_mode": 1, 
+      "id_number": "21001278", 
+      "other_names": "Jefwa", 
+      "name_of_company": "", 
+      "pin_no": "A784391209J", 
+      "postal_code": "00200", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 10, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Boaz", 
+      "surname": "Owiti", 
+      "postal_address": "P.O. Box 62920", 
+      "identification_mode": 1, 
+      "id_number": "22007821", 
+      "other_names": "Onyango", 
+      "name_of_company": "Bobo Properties", 
+      "pin_no": "A894390912D", 
+      "postal_code": "", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 11, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Cedric", 
+      "surname": "Mugo", 
+      "postal_address": "P.O. Box 10882", 
+      "identification_mode": 1, 
+      "id_number": "20078278", 
+      "other_names": "", 
+      "name_of_company": "Ced Consultancy", 
+      "pin_no": "A107894316T", 
+      "postal_code": "00200", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 12, 
+    "model": "consumer.landlord", 
+    "fields": {
+      "town": "Nairobi", 
+      "first_name": "Claire", 
+      "surname": "Wairimu", 
+      "postal_address": "P.O. Box 7239723", 
+      "identification_mode": 1, 
+      "id_number": "21907843", 
+      "other_names": "Njeri", 
+      "name_of_company": "", 
+      "pin_no": "A798743026H", 
+      "postal_code": "", 
+      "nationality": "KE"
+    }
+  }, 
+  {
+    "pk": 1, 
+    "model": "consumer.feedback", 
+    "fields": {
+      "consumer": 1, 
+      "feedback_type": 1, 
+      "description": "I usually get overcharged bills"
+    }
+  }, 
+  {
+    "pk": 2, 
+    "model": "consumer.feedback", 
+    "fields": {
+      "consumer": 2, 
+      "feedback_type": 2, 
+      "description": "You should try an electronic meter system like in Spain"
+    }
+  }, 
+  {
+    "pk": 3, 
+    "model": "consumer.feedback", 
+    "fields": {
+      "consumer": 3, 
+      "feedback_type": 1, 
+      "description": "We got water supply intermittently. We would like a steady supply of water or we'll sue Nairobi water "
     }
   }
 ]

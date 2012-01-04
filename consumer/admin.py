@@ -4,7 +4,7 @@ from consumer.models import *
 
 class ConsumerAdmin(admin.ModelAdmin):
     list_display = ["full_name", "mobile_no", "landline_no", "full_address", "company_name", "id_number", "pin_no",
-                    "nationality", "nature_of_business","consumer_type", "date_registered"]
+                    "nationality", "consumer_type", "date_registered"]
     search_fields = ['full_name', "mobile_no", "landline_no", "id_number", "pin_no"]
     
 class ConsumerTypeAdmin(admin.ModelAdmin):
