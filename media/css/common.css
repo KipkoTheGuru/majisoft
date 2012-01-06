@@ -99,7 +99,14 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .form-row{font-size:12px; border-bottom:#dddddd solid 1px;}
 .required{font-weight:bold;}
 .form-row div{margin:10px;}
-.form-row label{width:100px; float:left; height:auto;}
+.form-row label{width:150px; float:left; height:auto;}
 .form-row input, .form-row select{margin-left:10px;}
+.form-row p label{font-weight:bold;}
 
 .submit-row{margin-top:10px; border-top:#aaaaaa solid 1px; line-height: 36px;}
+
+.linkbutton{float:right; margin-right:10px; width:150px; moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; 
+color:#ffffff; background-color:#999999; text-decoration:none; line-height:20px; font-size:12px; font-weight:bold;}
+.linkbutton:hover{background-color:#009FC2}
+
+.linkbutton img{margin-right:5px;}

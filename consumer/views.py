@@ -2,16 +2,27 @@
 from consumer.models import Consumer
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template.context import RequestContext
-from consumer.forms import ConsumerForm
+from consumer.forms import *
 from django.http import HttpResponseForbidden
+from django.core import serializers
 
-def consumer(request, pk=None, action=None, template_name="consumer/consumer_details.html"):
+def consumer(request, pk=None, action=None, consumer_type='domestic', template_name="consumer/consumer_details.html"):
     data = {}
+    ConsumerForm = DomesticConsumerForm if consumer_type == 'domestic' else CorporateConsumerForm
+    
     if request.method == "GET":
-        if action == "R":
+        if action in ("C", "R", "U"):
             if pk:
                 consumer = get_object_or_404(Consumer, pk=pk)
+                if action in "R":
+                    consumer = serializers.serialize( "python", get_object_or_404(Consumer, pk=pk) )
                 data['consumer'] = consumer
+                if action in "U":
+                    data["consumerForm"] = ConsumerForm(instance=get_object_or_404(Consumer, pk=pk))
+            else:
+                data["consumerForm"] = ConsumerForm()
+        elif action == "L":
+            data["consumerForm"] = ConsumerForm(instance=get_object_or_404(Consumer))
         else:
             return HttpResponseForbidden()
     elif request.method == "POST":
