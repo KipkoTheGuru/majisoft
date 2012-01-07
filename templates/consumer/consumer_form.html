@@ -1,0 +1,10 @@
+{% extends "base_skeleton.html" %}
+
+{% block main_column %}
+	<form action="/view/" method="post">
+		<div class="form-row">
+			{{ consumerForm.as_p }}
+		</div>
+	</form>
+
+{% endblock main_column %}

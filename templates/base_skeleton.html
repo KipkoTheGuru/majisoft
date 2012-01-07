@@ -5,14 +5,14 @@
 		{% block header %}
 	    	<a href="index.html" style="text-decoration:none;"><img src="{{ MEDIA_URL }}images/logo2.png" /></a>
 	        <div class="header-details">
-				<ul>
-					<li><a href="#">Log-out</a></li>
-					<li> &nbsp | &nbsp </li>
-					<li><a href="#"> Manage Account</a> </li> 
-					<li> &nbsp | &nbsp </li>
-					<li><a> Welcome Eric </a> </li>        
-				</ul>
-			</div>
+        	<ul>
+                <li><a href="#">Log-out</a></li>
+                <li> &nbsp | &nbsp </li>
+                <li><a href="#"> Manage Account</a> </li> 
+                <li> &nbsp | &nbsp </li>
+                <li><a> Welcome Eric </a> </li>        
+            </ul>
+        </div>
         <div>
             <div class="navigation shadow">
             	{% block navigation %}
@@ -33,12 +33,12 @@
                 {% endblock navigation%}
             </div>
 		</div>
-		{% endblock header %}
+	     {% endblock header %}
     </div>
     <div class="breadcrumbs">
     	{% block breadcrumbs %}
     	
-    	{% endblock breadcrumbs %}
+    	{% endblock breadcrumbs%}
 	</div>
     <div class="content">
     	{% block content %}
@@ -67,16 +67,14 @@
 	          		</div>
 			        <div class="right-col">
 		            	{% block right_column %}
-						
 		            	{% endblock right_column %}
 			        </div>
 			    {% endblock main_content %}
 	        </div>
-		{% endblock content %}
+	      {% endblock content %}
     </div>
     <div class="footer">
     	{% block footer %}
-		
     	{% endblock footer %}
     </div>
  {% endblock container %}
