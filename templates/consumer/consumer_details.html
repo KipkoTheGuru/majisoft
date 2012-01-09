@@ -1,0 +1,52 @@
+{% extends "base_consumer.html" %}
+
+<title>{% block title %} {{ block.super }} | Details {% endblock title%} |</title>
+
+<div class="main-col">
+	{% block main_column %}
+		<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+		<div class="shadow">
+            <h1>{% if object.company_name %}
+            		{{ object.company_name }}
+            	{% else %}
+					{{ object.full_name }} 
+				{% endif %}
+				<a href="#" class="linkbutton">
+                	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Consumer</div>
+                </a>
+			</h1>
+            <div class="form-capsule">
+				<tr>
+					<div class="form-row">
+						{% if object.company_name %}
+							<p><label>Director's Name</label> {{ object.full_name }}</p>
+						{% endif %}
+						<p>
+							<label> {% if object.company_name %}Director's {% endif %}
+								{% if object.identification_mode = object.NATIONAL_ID %} 
+									National ID:
+								{% else %}
+									Passport No:								
+								{% endif %}</label> 
+							{{ object.id_number }}
+						</p>
+						<p>
+							<label> {% if object.company_name %}Director's {% endif %}
+								Nationality:</label> 
+							{{ object.id_number }}
+						</p>
+						<p><label> {% if object.company_name %}Director's {% endif %}Mobile No:</label> {{ object.mobile_no }}</p>
+						{% if object.landline_no %}
+							<p><label>Landline No:</label> {{ object.landline_no }}</p>
+						{% endif %}
+						{% if object.company_name and object.email %}
+							<p><label>Director's Email</label> {{ object.email }}</p>
+						{% endif %}
+						<p><label>Postal Address:</label> {{ object.full_address }}</p>
+						<p><label>{% if object.company_name %}Director's {% endif %} PIN No:</label> {{ object.pin_no }}</p>
+					</div>
+				</tr>
+			</div>
+        </div>
+	{% endblock main_column %}
+</div>	

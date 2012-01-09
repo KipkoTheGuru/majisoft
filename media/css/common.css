@@ -101,7 +101,8 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .form-row div{margin:10px;}
 .form-row label{width:150px; float:left; height:auto;}
 .form-row input, .form-row select{margin-left:10px;}
-.form-row p label{font-weight:bold;}
+.form-row p label{font-weight:bold; margin-right: 5px;}
+.form-row p{line-height: 30px;}
 
 .submit-row{margin-top:10px; border-top:#aaaaaa solid 1px; line-height: 36px;}
 

@@ -1,0 +1,18 @@
+{% extends "base_skeleton.html" %}
+
+<title>{% block title %} {{ block.super }} Consumer {% endblock title%} |</title>
+
+<div class="left-col">
+{% block left_col %}
+	<ul>
+    	<li><a href="#">View Consumers</a></li>
+        <li><a href="#">Register Consumer</a></li>
+        <li> <a href="#">New Application</a></li>
+    </ul>
+{% endblock left_col %}
+</div>
+
+<div class="main-col">
+{% block main_column %}
+{% endblock main_column %}
+</div>

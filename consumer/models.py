@@ -1,12 +1,15 @@
 from django.db import models
-import countries
+from consumer import countries
 
 IDENTIFICATION=(
         (1, 'National ID'),
         (2, 'Passport'),
 )
 
-class Consumer(models.Model): 
+class Consumer(models.Model):
+    import countries 
+    NATIONAL_ID = 1
+    PASSPORT = 2
     title = models.ForeignKey("Title")
     first_name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
@@ -64,14 +67,23 @@ class Title(models.Model):
     def __unicode__(self):
         return "%s." % self.name
 
+class UnapprovedApplication(models.Manager):
+    def get_query_set(self):
+        return super(UnapprovedApplication, self).get_query_set().filter(approved=0)
+
 class Application(models.Model):
     consumer = models.ForeignKey("Consumer")
     plot_no = models.ForeignKey("Plot")
     approved = models.BooleanField(default=False)
     date_received = models.DateTimeField(auto_now_add=True)
     
+    #Managers
+    unapproved = UnapprovedApplication()
+    objects = models.Manager()
+    
     class Meta:
         db_table = "Application"
+        ordering = ['-date_received']
 
 class Plot(models.Model):
     plot_no = models.CharField(max_length=50)
@@ -80,6 +92,9 @@ class Plot(models.Model):
     
     class Meta:
         db_table = "Plot"
+    
+    def __unicode__(self):
+        return "%s" % self.plot_no
 
 class Landlord(models.Model):
     first_name = models.CharField(max_length=50)

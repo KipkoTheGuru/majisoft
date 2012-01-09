@@ -1,5 +1,20 @@
 {% extends "base_skeleton.html" %}
 
+<title>{% block title %} {{ block.super }} Dashboard {% endblock title%} |</title>
+
+{% block left_col %}
+	<div  align="center"><h1 class="widget">Today's date</h1></div>
+	<div id="calendar">
+	</div>
+	<script type="text/javascript">
+		(function($){
+			$('#calendar').datepicker({
+				inline: true,
+			});
+		})(jQuery);
+	</script>
+{% endblock left_col %}
+
 {% block main_column %}
     <div>
     	<div align="center">
@@ -14,13 +29,17 @@
 			<tr class="table-header">
 				<th width="230" scope="col"><div align="left">Customer</div></th>
 				<th width="187" scope="col">Consumer Type</th>
-				<th width="160" scope="col">National ID</th>
+				<th width="160" scope="col">Date of application</th>
 			</tr>
-			{% for customer in new_customers %}
+			{% for customer in latest_applications %}
 				<tr>
-					<td><a href="#">{{ customer.full_name }}</a></td>
-					<td>{{ customer.consumer_type }}</td>
-					<td>{{ customer.id_number}}</td>
+					{% if customer.consumer.company_name %}
+						<td><a href="{{ customer.consumer.get_absolute_url }}">{{ customer.consumer.company_name }}</a></td>
+					{% else %}
+						<td><a href="{{ customer.consumer.get_absolute_url }}">{{ customer.consumer.full_name }}</a></td>
+					{% endif %}
+					<td>{{ customer.consumer.consumer_type }}</td>
+					<td>{{ customer.date_received}}</td>
 				</tr>
 			{% endfor %}
 		</table>

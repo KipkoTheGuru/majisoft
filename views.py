@@ -1,7 +1,6 @@
 from django.shortcuts import render_to_response
 from django.template.context import RequestContext
 from django.core.urlresolvers import reverse
-from django.contrib.auth.views import login as auth_login, logout as auth_logout
 from consumer.models import Consumer
 
 def index(request):
