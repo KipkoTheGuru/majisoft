@@ -1,16 +1,24 @@
 from django.db import models
 from django.contrib.auth.models import User
-from consumer.models import Consumer
+from consumer.models import Consumer, Application
 from hr.models import Employee
 
 class Meter(models.Model):
+    METER_STATUS=(
+         (1, "Working"),
+         (2, "Damaged")
+     )
     serial_no = models.CharField(max_length=30, unique=True)
     meter_category = models.ForeignKey("MeterCategory", verbose_name='Meter Category(in mm)')
+    meter_status = models.IntegerField(choices=METER_STATUS)
     date_purchased = models.DateField()
     reset_value = models.IntegerField(default=10000)
     
     class Meta:
         db_table = "Meter"
+        
+    def __unicode__(self):
+        return "%s" % self.serial_no
 
 class MeterCategory(models.Model):
     measure = models.IntegerField(unique=True, verbose_name='Measure(in mm)')
@@ -25,21 +33,24 @@ class MeterCategory(models.Model):
         return "%d mm" % self.measure
 
 class Account(models.Model):
-    account_no = models.CharField(max_length=50)
-    sub_zone = models.ForeignKey("SubZone", verbose_name='Sub-zone')
-    consumer = models.ForeignKey(Consumer)
-    meter_no = models.ForeignKey(Meter)
-    service_line_diameter = models.DecimalField(max_digits=10, decimal_places=3)
+    meter_no = models.ForeignKey(Meter, blank=True, null=True)
+    application = models.ForeignKey(Application)
     sewer_connected = models.BooleanField(default=False)
     refuse = models.BooleanField(default=False)
     is_active = models.BooleanField(default=False)
-    date_activated = models.DateTimeField("Last Activated On")
+    closed = models.BooleanField(default=False)
+    date_activated = models.DateTimeField("Last Activated On", editable=False, blank=True, null=True)
     
     class Meta:
         db_table = "Account"
     
     def __unicode__(self):
         return "%s" % (self.account_no)
+    
+    @property
+    def account_no(self):
+        return "%d-%d%d" % (self.application.consumer.pk, self.id, self.application.plot_no.sub_zone.pk)
+    
 
 class PreviousAccountOwner(models.Model):
     account_no = models.ForeignKey("Account")

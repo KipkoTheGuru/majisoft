@@ -60,7 +60,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 
 .main-content{margin-left:5px; position:relative;}
 
-.left-col{float:left; min-width: 215px; min-height:300px; margin-left:5px; margin-top:7px; border:#AAAAAA solid 1px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;}
+.left-col{float:left; min-width: 215px; font-size:12px; min-height:300px; margin-left:5px; margin-top:7px; border:#AAAAAA solid 1px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;}
 
 .main-col{width:600px; float:left; margin-left:5px;}
 .main-col p, .main-col h1{margin:10px;}
@@ -96,18 +96,37 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .drop-down{height:30px;}
 
 .form-capsule{margin:10px 0 5px 0; border-top:#bbbbbb solid 1px;}
+.form-capsule table {min-width: 590px;margin-left: 5px;}
 .form-row{font-size:12px; border-bottom:#dddddd solid 1px;}
 .required{font-weight:bold;}
+.form-row {min-height: 30px;}
 .form-row div{margin:10px;}
 .form-row label{width:150px; float:left; height:auto;}
 .form-row input, .form-row select{margin-left:10px;}
-.form-row p label{font-weight:bold; margin-right: 5px;}
+.form-row p label{font-weight:bold; margin-right: 5px; overflow-y:hidden;}
 .form-row p{line-height: 30px;}
+.form-row .form-links{text-decoration: none}
+.form-row .form-links p{font-size: 16px; text-decoration: none}
+.form-row .form-links p:hover{background-color: #009FC2; color: #ffffff;}
+.form-row table{margin-bottom: 10px; margin-left: auto; margin-right: auto;}
+.form-row table a{margin-left: 5px;}
 
 .submit-row{margin-top:10px; border-top:#aaaaaa solid 1px; line-height: 36px;}
+.main-col .shadow {margin-bottom: 50px; }
+
+.active-accounts{background-color:#92CC47; color:#ffffff; line-height:24px;}
+.suspended{background-color:#c63738; color:#ffffff; line-height:24px;}
+.application{background-color:#417690; color:#ffffff; line-height:24px;}
+.inactive{background-color:#999999; color:#ffffff; line-height:24px;}
 
 .linkbutton{float:right; margin-right:10px; width:150px; moz-border-radius:8px; border-radius:8px; -webkit-border-radius:8px; 
 color:#ffffff; background-color:#999999; text-decoration:none; line-height:20px; font-size:12px; font-weight:bold;}
 .linkbutton:hover{background-color:#009FC2}
+
+#approve-application, #activate{color: #ffffff; background-color: #92CC47; line-height: 26px;}
+#approve-application:hover, #activate:hover{color: #92CC47; background-color: #ffffff; border: #92CC47 solid 1px;}
+
+#reject-application, #close{color: #ffffff; background-color: #c63738; line-height: 26px;}
+#reject-application:hover, #close:hover{color: #c63738; background-color: #ffffff; border: #c63738 solid 1px;}
 
 .linkbutton img{margin-right:5px;}

@@ -12,5 +12,10 @@ def index(request):
     data = {"new_customers":new_customers}
     return render_to_response('home.html', data, context_instance=RequestContext(request))
 
-def login(request, *args, **kwargs):
-    pass
+def login(request, template_name="login.html"):
+    user = User.objects.get(username=request.POST['username'])
+    if user.password == request.POST['password']:
+        request.session['member_id'] = user.id
+        request.session['user_type'] = user.username
+        request.session['name'] = user.consumer_set.filter(id=user.id).first_name
+        return HttpResponseRedirect(reverse("home"))

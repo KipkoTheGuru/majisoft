@@ -1,0 +1,60 @@
+{% extends "base_consumer.html" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#approve-application").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url application-approve application.pk %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url consumer-details application.consumer.pk %}");
+					  }
+				});
+				return false;
+			});
+			$("#reject-application").click(function(){
+				return false;
+			});
+		});
+	</script>
+{% endblock extrajs %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>Application Details
+			<a href="#" class="linkbutton" id="reject-application">
+	        	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />Reject</div>
+	        </a>
+			<a href="#" class="linkbutton" id="approve-application">
+	        	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-yes.gif" />Approve</div>
+	        </a>
+		</h1>
+		<div class="form-capsule">
+			<h1>
+				{% if application.consumer.company_name %}
+	        		<a href="{{ application.consumer.get_absolute_url }}" style="text-decoration: none; color: #666666;">{{ application.consumer.company_name }}</a>
+	        	{% else %}
+					<a href="{{ application.consumer.get_absolute_url }}" style="text-decoration: none; color: #666666;">{{ application.consumer.full_name }}</a> 
+				{% endif %}
+				
+			</h1>
+			<div class="form-row">
+				<p>
+					<label>Plot No:</label> {{ application.plot_no.plot_no }}
+				</p>
+				<p>
+					<label>Plot Location:</label> {{ application.plot_no.plot_location }}
+				</p>
+				<p>
+					<label>Service-line diameter:</label> {{ application.service_line }}
+				</p>
+				<p>
+					<label>Date Received:</label> {{ application.date_received }}
+				</p>
+			</div>
+		</div>
+	</div>
+{% endblock main_column %}

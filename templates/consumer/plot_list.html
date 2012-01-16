@@ -1,0 +1,31 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<div class="form-capsule">
+			<table>
+				<tr>
+					<th>Plot No</th>
+					<th>Landlord</th>
+					<th>Street</th>
+				</tr>
+				{% for plot in plots %}
+				<tr>
+					<td><a href="">{{ plot.plot_no }}</a></td>
+					<td>
+						<a href="">
+							{% if plot.landlord.name_of_company%}
+								{{ plot.landlord.name_of_company }}
+							{% else %}
+								{{ plot.landlord.full_name }}
+							{% endif %}
+						</a>
+					</td>
+					<td>{{ plot.street }} </td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+{% endblock main_column %}

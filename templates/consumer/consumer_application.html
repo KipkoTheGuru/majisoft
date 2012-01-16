@@ -3,17 +3,25 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
-		<h1>Add Consumer</h1>
+		<h1>{% if applicant %}
+				{% if applicant.company_name %}
+					{{ applicant.company_name }}'s
+				{% else %}
+					{{ applicant.full_name }}'s
+				{% endif %}
+			{% else %}
+				{% if application.consumer.company_name %}
+					{{ application.consumer.company_name }}'s
+				{% else %}
+					{{ application.consumer.full_name }}'s
+				{% endif %}
+			{% endif %} application details</h1>
 		<div class="form-capsule">
-			<form action="{% url consumer-add consumer_type %}" method="post" >
+			<form action="" method="post">
 				{% csrf_token %}
-				{% for field in consumerForm %}
+				{% for field in applicationForm%}
 				<div class="form-row">
-					{% if field.errors %}
-						{% for error in field.errors %} 
-							{{ field.error }}
-						{% endfor %}
-					{% endif %}
+					{{ field.error }}
 					<p>{{ field.label_tag }}: {{ field }}</p>
 				</div>
 				{% endfor %}
@@ -21,6 +29,6 @@
                 	<input type="submit" value="Save" class="btn-save" name="save"/>
                 </div>
 			</form>
-		</div>
+		</div>					
 	</div>
 {% endblock main_column %}

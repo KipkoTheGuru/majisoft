@@ -11,7 +11,7 @@ class MeterCategoryAdmin(admin.ModelAdmin):
     search_fields = ["diameter"]
 
 class AccountAdmin(admin.ModelAdmin):
-    list_display = ["account_no", "consumer", "sub_zone", "meter_no", "sewer_connected", "is_active", "date_activated"]
+    list_display = ["account_no", "application", "meter_no", "sewer_connected", "is_active", "date_activated"]
     search_fields = ["consumer", "sub_zone"]
 
 class MeterReadingAdmin(admin.ModelAdmin):

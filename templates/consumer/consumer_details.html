@@ -6,45 +6,153 @@
 	{% block main_column %}
 		<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 		<div class="shadow">
-            <h1>{% if object.company_name %}
-            		{{ object.company_name }}
+            <h1>{% if consumer.company_name %}
+            		{{ consumer.company_name }}
             	{% else %}
-					{{ object.full_name }} 
+					{{ consumer.full_name }} 
 				{% endif %}
-				<a href="#" class="linkbutton">
+				<a href="{% url consumer-edit consumer.consumer_type.consumer_type.lower consumer.id %}" class="linkbutton">
                 	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Consumer</div>
                 </a>
 			</h1>
             <div class="form-capsule">
 				<tr>
 					<div class="form-row">
-						{% if object.company_name %}
-							<p><label>Director's Name</label> {{ object.full_name }}</p>
+						{% if consumer.company_name %}
+							<p><label>Director's Name</label> {{ consumer.full_name }}</p>
 						{% endif %}
 						<p>
-							<label> {% if object.company_name %}Director's {% endif %}
-								{% if object.identification_mode = object.NATIONAL_ID %} 
+							<label> {% if consumer.company_name %}Director's {% endif %}
+								{% if consumer.identification_mode = consumer.NATIONAL_ID %} 
 									National ID:
 								{% else %}
 									Passport No:								
 								{% endif %}</label> 
-							{{ object.id_number }}
+							{{ consumer.id_number }}
 						</p>
 						<p>
-							<label> {% if object.company_name %}Director's {% endif %}
+							<label> {% if consumer.company_name %}Director's {% endif %}
 								Nationality:</label> 
-							{{ object.id_number }}
+							{{ consumer.country_of_origin }}
 						</p>
-						<p><label> {% if object.company_name %}Director's {% endif %}Mobile No:</label> {{ object.mobile_no }}</p>
-						{% if object.landline_no %}
-							<p><label>Landline No:</label> {{ object.landline_no }}</p>
+						<p><label> {% if consumer.company_name %}Director's {% endif %}Mobile No:</label> {{ consumer.mobile_no }}</p>
+						{% if consumer.landline_no %}
+							<p><label>Landline No:</label> {{ consumer.landline_no }}</p>
 						{% endif %}
-						{% if object.company_name and object.email %}
-							<p><label>Director's Email</label> {{ object.email }}</p>
+						{% if consumer.company_name and consumer.email %}
+							<p><label>Director's Email</label> {{ consumer.email }}</p>
 						{% endif %}
-						<p><label>Postal Address:</label> {{ object.full_address }}</p>
-						<p><label>{% if object.company_name %}Director's {% endif %} PIN No:</label> {{ object.pin_no }}</p>
+						<p><label>Postal Address:</label> {{ consumer.full_address }}</p>
+						<p><label>{% if consumer.company_name %}Director's {% endif %} PIN No:</label> {{ consumer.pin_no }}</p>
 					</div>
+					{% if active_accounts %}
+					<div class="form-row">
+                    	<div align="center"><h2 class="active-accounts">Active Accounts</h2></div>
+                    	<table>
+                    		<tr>
+                    			<th>Account No</th>
+                    			<th>Sub-zone</th>
+                    			<th>Plot No</th>
+                    			<th>Last Activated</th>
+                    		</tr>
+                            {% for account in active_accounts %}
+                            	<tr>
+                            		<td>
+                            			<a href="{% url account-details account.id %}">
+                            				{{ account.account_no }}
+                            			</a>
+                            		</td>
+                    				<td>{{ account.application.plot_no.sub_zone }}</td>
+                    				<td>{{ account.application.plot_no.plot_no }}</td>
+                    				<td>{{ account.date_activated }}</td>
+                            	</tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                    {% endif %}
+                    {% if inactive_accounts %}
+                    <div class="form-row">
+                    	<div align="center"><h2 class="inactive">Inactive Accounts</h2></div>
+                        <table>
+                        	<tr>
+                        		<th>Account No</th>
+                    			<th>Sub-zone</th>
+                    			<th>Plot No</th>
+                    			<th>Last Activated</th>
+                        	</tr>
+                        	{% for account in inactive_accounts %}
+                            	<tr>
+                            		<td>
+                            			<a href="{% url account-details account.id %}">
+                            				{{ account.account_no }}
+                            			</a>
+                            		</td>
+                    				<td>{{ account.application.plot_no.sub_zone }}</td>
+                    				<td>{{ account.application.plot_no.plot_no }}</td>
+                    				<td>{{ account.date_activated }}</td>
+                            	</tr>
+                        	{% endfor %}
+                        </table>
+                    </div>
+                    {% endif %}
+                    {% if unreviewed_applications %}
+                    <div class="form-row">
+                    	<div align="center"><h2 class="application">Account Applications</h2></div>
+                        <table>
+                        	<tr>
+                        		<th>Application No</th>
+                        		<th>Service-line diameter</th>
+                        		<th style="min-width: 110px;">Sub-zone</th>
+                        		<th>Plot No</th>
+                        		<th>Approved?</th>
+                        	</tr>
+                        	{% for application in applications %}
+                            	<tr>
+                            		<td>
+                            			<a href="{% url application-details application.id%}">
+                            				{{ application.consumer.id }}-{{ application.id }}
+                            			</a>
+                            		</td>
+                    				<td>{{ application.service_line }}</td>
+                    				<td>{{ application.plot_no.sub_zone.name }}</td>
+                    				<td>{{ application.plot_no.plot_no }}</td>
+                    				<td><div align="center"> {% if application.approved %}
+                    						<img src="{{ MEDIA_URL }}images/icons/icon-yes.gif" />
+                						{% else %}
+                							<img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />
+            							{% endif %}
+            							</div>
+                					</td>
+                            	</tr>
+                        	{% endfor %}
+                        </table>
+                    </div>
+                    {% endif %}
+                    {% if suspended_accounts %}
+                    <div class="form-row">
+                    	<div align="center"><h2 class="suspended">Suspended Accounts</h2></div>
+                    	<table>
+                    		<tr>
+                    			<th>Account No</th>
+                    			<th>Location</th>
+                    			<th>Plot No</th>
+                    			<th>Last Activated</th>
+                    		</tr>
+                    	{% for suspension in suspended_accounts %}
+                            	<tr>
+                            		<td>
+                            			<a href="{% url account-details suspension.id%}">
+                            				{{ suspension.account_no }}
+                            			</a>
+                            		</td>
+                    				<td>{{ suspension.application.plot_no.plot_location }}</td>
+                    				<td>{{ suspension.application.plot_no.plot_no }}</td>
+                    				<td>{{ suspension.date_activated }}</td>
+                            	</tr>
+                        	{% endfor %}
+                        	</table>
+                    </div>
+                    {% endif %}
 				</tr>
 			</div>
         </div>

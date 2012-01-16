@@ -18,14 +18,7 @@
             <div class="navigation shadow">
             	{% block navigation %}
 	            	<li><a href="#">Home</a></li>
-	                <li>
-	                	<a href="viewconsumer.html">Consumers</a>
-	                    <ul>
-	                    	<li><a href="viewconsumer.html">View Consumers</a></li>
-	                        <li><a href="addconsumer.html">Register Consumers</a></li>
-	                        <li><a href="#">Account application</a></li>
-	                    </ul>
-					</li>
+	                <li><a href="{% url consumer-list %}">Consumers</a></li>
 	                <li><a href="#">Billing</a></li>
 	                <li><a href="#">Readings</a></li>
 	                <li><a href="#">Reports</a></li>
@@ -57,17 +50,14 @@
 		        			{% endblock module_header %}
 				        {% endblock main_column %}
 	          		</div>
-			        <div class="right-col">
-		            	{% block right_column %}
-		            	{% endblock right_column %}
-			        </div>
+	            	{% block right_column %}
+		            	<div class="right-col">
+		            	</div>
+	            	{% endblock right_column %}
+			        
 			    {% endblock main_content %}
 	        </div>
 	      {% endblock content %}
-    </div>
-    <div class="footer">
-    	{% block footer %}
-    	{% endblock footer %}
     </div>
  {% endblock container %}
  

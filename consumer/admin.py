@@ -15,11 +15,11 @@ class TitleAdmin(admin.ModelAdmin):
     list_display = ["name"]
 
 class ApplicationAdmin(admin.ModelAdmin):
-    list_display = ["id", "consumer", "plot_no", "approved"]
+    list_display = ["id", "consumer", "plot_no", "approved", "reviewed"]
     search_fields = ["consumer"]
 
 class PlotAdmin(admin.ModelAdmin):
-    list_display = ["plot_no", "landlord", "street"]
+    list_display = ["plot_no", "landlord", "sub_zone", "street"]
     search_fields = ["plot_no", "landlord"]
     
 class LandlordAdmin(admin.ModelAdmin):

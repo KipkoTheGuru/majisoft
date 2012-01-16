@@ -31,17 +31,25 @@
 				<th width="187" scope="col">Consumer Type</th>
 				<th width="160" scope="col">Date of application</th>
 			</tr>
-			{% for customer in latest_applications %}
+			{% if latest_applications %}
+				{% for customer in latest_applications %}
+					<tr>
+						{% if customer.consumer.company_name %}
+							<td><a href="{{ customer.consumer.get_absolute_url }}">{{ customer.consumer.company_name }}</a></td>
+						{% else %}
+							<td><a href="{{ customer.consumer.get_absolute_url }}">{{ customer.consumer.full_name }}</a></td>
+						{% endif %}
+						<td>{{ customer.consumer.consumer_type }}</td>
+						<td>{{ customer.date_received}}</td>
+					</tr>
+				{% endfor %}
+			{% else %}
 				<tr>
-					{% if customer.consumer.company_name %}
-						<td><a href="{{ customer.consumer.get_absolute_url }}">{{ customer.consumer.company_name }}</a></td>
-					{% else %}
-						<td><a href="{{ customer.consumer.get_absolute_url }}">{{ customer.consumer.full_name }}</a></td>
-					{% endif %}
-					<td>{{ customer.consumer.consumer_type }}</td>
-					<td>{{ customer.date_received}}</td>
+					<td><p> No  </p></td>
+					<td><p> new  </p></td>
+					<td><p> Applications </p></td>
 				</tr>
-			{% endfor %}
+			{% endif %}
 		</table>
      </div>
 {% endblock main_column %}

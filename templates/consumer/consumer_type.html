@@ -1,0 +1,13 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<p> Please select type of consumer you would like to add</p>
+		<div class="form-capsule">
+			{% for type in consumer_types %}
+				<div class="form-row" align="center"><a href="{% url consumer-add type.consumer_type.lower %}" class="form-links"><p>{{ type.consumer_type }}</p></a></div>
+			{% endfor %}
+		</div>
+	</div>
+{% endblock main_column %}

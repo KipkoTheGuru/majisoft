@@ -5,14 +5,17 @@
 <div class="left-col">
 {% block left_col %}
 	<ul>
-    	<li><a href="#">View Consumers</a></li>
-        <li><a href="#">Register Consumer</a></li>
-        <li> <a href="#">New Application</a></li>
+    	<li><a href="{% url consumer-list %}">View Consumers</a></li>
+        <li><a href="{% url consumer-type %}">Register Consumer</a></li>
+        <li><a href="#"> All Accounts</a></li>
+		<li><a href="#"> Closed Accounts</a></li>
+		<li><a href="#"> New Account</a></li>
+		<li><a href="{% url application-list %}"> All Account Applications</a></li>
+		<li><a href="{% url rejected-list %}"> Rejected Applications</a></li>
+		<li><a href="{% url plot-list %}">Plots</a></li>
     </ul>
 {% endblock left_col %}
 </div>
+{% block right_column %}
 
-<div class="main-col">
-{% block main_column %}
-{% endblock main_column %}
-</div>
+{% endblock right_column %}

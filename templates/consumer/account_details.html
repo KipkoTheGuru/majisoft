@@ -1,0 +1,89 @@
+{% extends "base_consumer.html" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			{% if account.closed and account.meter_no %}
+				$("#activate").click(function(){
+					$.ajax({
+						  type: 'POST',
+						  url: "{% url account-activate account.pk %}",
+						  data: {},
+						  success:function(){
+						  	window.location.replace("{% url consumer-details account.application.consumer.pk %}");
+						  }
+					});
+					return false;
+				});
+			{% endif %}
+			$("#close").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url account-close account.pk %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url consumer-details account.application.consumer.pk %}");
+					  }
+				});
+				return false;
+			});
+		});
+	</script>
+{% endblock extrajs %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>{% if account.application.consumer.company_name %}
+        		{{ account.application.consumer.company_name }}
+        	{% else %}
+				{{ account.application.consumer.full_name }} 
+			{% endif %}
+            <a href="" class="linkbutton" id="close">
+            	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />Close account</div>
+            </a>
+            {% if account.closed %}
+	            <a href="#" class="linkbutton" id="activate">
+		        	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-yes.gif" />Activate</div>
+		        </a>
+	        {% endif %}
+		</h1>
+		<div class="form-capsule">
+			{% if account.closed %}
+				<div class="form-row">
+					<p><label>Meter Serial No</label> {% if account.meter_no %}{{ account.meter_no }}
+						{% else %}
+						N/A
+						{% endif %}</p>
+					<p><label>Location</label> {{ account.application.plot_no.plot_location }}</p>
+					<p><label>Sewer Connected</label>
+						{% if account.sewer_connected %} 
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					</p>
+					<p><label>Refuse Services</label>
+						{% if account.refuse %} 
+							Yes
+						{% else %}
+							No
+						{% endif %}
+					</p>
+				</div>
+			{% else %}
+				<form action="" method="post">
+					{% csrf_token %}
+					{% for field in accountForm %}
+						<div class="form-row">
+							<p>{{ field.label_tag }}: {{ field }}</p>
+						</div>
+					{% endfor %}
+					<div class="submit-row" align="center">
+	                	<input type="submit" value="Save" class="btn-save" name="save"/>
+	                </div>
+				</form>
+			{% endif %}
+		</div>
+	</div>
+{% endblock main_column %}
