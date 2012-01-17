@@ -117,6 +117,8 @@ class Landlord(models.Model):
     nationality = models.CharField(max_length=50, default='KE', choices=nations.COUNTRIES)
     name_of_company = models.CharField(max_length=50, blank=True, null = True)
     pin_no = models.CharField(max_length=50)
+    mobile_no = models.CharField(max_length=50)
+    landline_no = models.CharField('Landline', max_length=50, blank=True, null = True)
     postal_address = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=20, blank=True, null = True)
     town = models.CharField('Town/City', max_length=50)
@@ -143,6 +145,10 @@ class Landlord(models.Model):
         for country in nations.COUNTRIES:
             if country.__get__(0) == self.nationality:
                 return "%s" % country.__get__(1)
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ("landlord-details", [str(self.pk)])
     
 class Feedback(models.Model):
     FEEDBACK_TYPE=(

@@ -39,8 +39,8 @@
 						{% if consumer.landline_no %}
 							<p><label>Landline No:</label> {{ consumer.landline_no }}</p>
 						{% endif %}
-						{% if consumer.company_name and consumer.email %}
-							<p><label>Director's Email</label> {{ consumer.email }}</p>
+						{% if consumer.email %}
+							<p><label>{% if consumer.company_name %}Director's{% endif %} Email</label> {{ consumer.email }}</p>
 						{% endif %}
 						<p><label>Postal Address:</label> {{ consumer.full_address }}</p>
 						<p><label>{% if consumer.company_name %}Director's {% endif %} PIN No:</label> {{ consumer.pin_no }}</p>

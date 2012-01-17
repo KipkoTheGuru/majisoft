@@ -3,6 +3,12 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
+		<h1>List of Plots:</h1>
+		<p><a href="{% url plot-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Plot</a></p>
+		<p>
+			<label for="search">Search</label>
+			<input type="text" id="search" name="search"/>
+		</p>
 		<div class="form-capsule">
 			<table>
 				<tr>
@@ -12,9 +18,9 @@
 				</tr>
 				{% for plot in plots %}
 				<tr>
-					<td><a href="">{{ plot.plot_no }}</a></td>
+					<td><a href="{% url plot-details plot.pk %}">{{ plot.plot_no }}</a></td>
 					<td>
-						<a href="">
+						<a href="{% url landlord-details plot.landlord.id %}">
 							{% if plot.landlord.name_of_company%}
 								{{ plot.landlord.name_of_company }}
 							{% else %}
@@ -29,3 +35,13 @@
 		</div>
 	</div>
 {% endblock main_column %}
+
+{% block right_column %}
+	<div class="right-col">
+		<ul>
+	        <li><a href="{% url landlord-list %}"> Landlords </a></li>
+			<li><a href="#"> Add New Plot </a></li>
+			<li><a href="#"> All Plots</a></li>
+	    </ul>
+	</div>
+{% endblock right_column %}

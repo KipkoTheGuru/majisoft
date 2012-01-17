@@ -1,0 +1,44 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>
+			{% if landlord.company_name %}
+	    		{{ landlord.company_name }}
+	    	{% else %}
+				{{ landlord.full_name }} 
+			{% endif %}
+		</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				{% if landlord.company_name %}
+					<p><label>Director's Name</label> {{ landlord.full_name }}</p>
+				{% endif %}
+				<p>
+					<label> {% if landlord.company_name %}Director's {% endif %}
+						{% if landlord.identification_mode = landlord.NATIONAL_ID %} 
+							National ID:
+						{% else %}
+							Passport No:								
+						{% endif %}</label> 
+					{{ landlord.id_number }}
+				</p>
+				<p>
+					<label> {% if landlord.company_name %}Director's {% endif %}
+						Nationality:</label> 
+					{{ landlord.country_of_origin }}
+				</p>
+				<p><label> {% if landlord.company_name %}Director's {% endif %}Mobile No:</label> {{ landlord.mobile_no }}</p>
+				{% if landlord.landline_no %}
+					<p><label>Landline No:</label> {{ landlord.landline_no }}</p>
+				{% endif %}
+				{% if landlord.email %}
+					<p><label>{% if landlord.company_name %}Director's{% endif %} Email</label> {{ landlord.email }}</p>
+				{% endif %}
+				<p><label>Postal Address:</label> {{ landlord.full_address }}</p>
+				<p><label>{% if landlord.company_name %}Director's {% endif %} PIN No:</label> {{ landlord.pin_no }}</p>
+			</div>
+		</div>
+	</div>
+{% endblock main_column %}

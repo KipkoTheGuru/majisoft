@@ -1,0 +1,50 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1> Plot Details 
+			<a href="{% url landlord-edit plot.id %}" class="linkbutton">
+            	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Plot</div>
+            </a></h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<p><label>Plot No:</label>{{ plot.plot_no }}</p>
+				<p><label>Location:</label> {{ plot.plot_location }}</p>
+				<p><label>Landlord:</label>
+					<a href="{% url landlord-details plot.landlord.pk %}">
+						{% if plot.landlord.name_of_company %} 
+							{{ plot.landlord.name_of_company }}
+						{% else %}
+							{{ plot.landlord.full_name }}
+						{% endif %}
+					</a>
+				</p>
+			</div>
+			<div class="form-row">
+            	<div align="center"><h2 class="active-accounts">Current Served Consumers</h2></div>
+            	<table>
+            		<tr>
+            			<th>Consumer</th>
+            			<th>Account No</th>
+            			<th>Last Activated</th>
+            		</tr>
+                    {% for account in accounts %}
+                    	<tr>
+                    		<td>
+                    			<a href="{% url consumer-details account.application.consumer.id %}">
+                    				{{ account.application.consumer.full_name }}</td>
+                    			</a>
+                    		<td>
+                    			<a href="{% url account-details account.id %}">
+                    				{{ account.account_no }}
+                    			</a>
+                    		</td>
+            				<td>{{ account.date_activated }}</td>
+                    	</tr>
+                    {% endfor %}
+                </table>
+            </div>
+		</div>
+	</div>
+{% endblock main_column %}

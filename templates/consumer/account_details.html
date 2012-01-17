@@ -34,11 +34,16 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
-		<h1>{% if account.application.consumer.company_name %}
-        		{{ account.application.consumer.company_name }}
-        	{% else %}
-				{{ account.application.consumer.full_name }} 
-			{% endif %}
+		<h1>
+			<a href="{% url consumer-details account.application.consumer.id%}" style="text-decoration: none;">
+				<h1>
+				{% if account.application.consumer.company_name %}
+	        		{{ account.application.consumer.company_name }}
+	        	{% else %}
+					{{ account.application.consumer.full_name }} 
+				{% endif %}
+				</h1>
+			</a>
             <a href="" class="linkbutton" id="close">
             	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />Close account</div>
             </a>

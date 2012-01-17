@@ -1,0 +1,46 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>Plot Form</h1>
+		<h2>{% if landlord.company_name %}
+				{{ landlord.company_name }}
+			{% else %}
+				{{ landlord.full_name }}
+			{% endif %}'s new plot
+		</h2>
+		<div class="form-capsule">
+			<form action="" method="post">
+				{% csrf_token %}
+				{% if landlordForm %}
+					{% for field in landlordForm %}
+						<div class="form-row">
+							{{ field.error }}
+							<p>{{ field.label_tag }}: {{ field }}</p>
+						</div>
+					{% endfor %}
+				{% endif %}
+				{% for field in plotForm %}
+				<div class="form-row">
+					{{ field.error }}
+					<p>{{ field.label_tag }}: {{ field }}</p>
+				</div>
+				{% endfor %}
+				<div class="submit-row" align="center">
+                	<input type="submit" value="Save" class="btn-save" name="save"/>
+                </div>
+			</form>
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+	<div class="right-col">
+		<ul>
+	        <li><a href="{% url landlord-list %}"> Landlords </a></li><br />
+			<li><a href="#"> Add New Plot </a></li>
+			<li><a href="#"> All Plots</a></li>
+	    </ul>
+	</div>
+{% endblock right_column %}

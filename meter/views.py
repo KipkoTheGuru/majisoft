@@ -37,6 +37,7 @@ def account(request, pk=None, action=None, template_name="consumer/consumer_acco
             account = get_object_or_404(Account, pk=pk)
             if action == "activate":
                 account.closed = False
+                account.is_active = True
             elif action=="close":
                 account.closed = True
                 account.is_active = False

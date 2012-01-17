@@ -5,12 +5,15 @@ body,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,legend,input,p,blockq
 
 img{border:none;}
 
-h1,h2,h3,h4,h5,h6 {font-size:100%; color:#666666;}
+h1,h3,h4,h5,h6 {font-size:100%; color:#666666;}
+h2{font-size:100%; color:#417690;}
 
 p { line-height: 16px; margin: 0 0 18px; font-size:12px; }
 select{min-width:100px;}
 
 .shadow{border:#AAAAAA solid 1px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;}
+.links{text-decoration:none; font-weight:bold; color:#009FC2;}
+.links:hover{text-decoration:underline;}
 
 table{border-spacing:0px; line-height:24px; border-top:#AAAAAA solid 1px; border-left:#AAAAAA solid 1px; padding-left:2px;  margin-top:10px; margin-bottom:10px; font-size:13px; width:inherit; vertical-align:top;}
 
@@ -67,14 +70,12 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 
 .right-col{float:right; min-height:400px; width:220px; float:left; margin-left:5px; border:#AAAAAA solid 1px; margin-top:40px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;}
 
-.left-col ul{margin-top:36px;}
-.left-col ul li a{color:#009FC2; font-size:14px; font-weight:bold; text-decoration:none; float:right; width:inherit; margin-right:10px;}
-.left-col ul li{line-height:28px;}
-.left-col ul li:hover a{background-color:#999999; width:200px; color:#ffffff;}
+.left-col ul, .right-col ul{margin-top:36px;}
+.left-col ul li a, .right-col ul li a{color:#009FC2; font-size:14px; font-weight:bold; text-decoration:none; float:right; width:inherit; margin-right:10px;}
+.right-col ul li a{float:left; margin-left: 20px;}
+.left-col ul li, .right-col ul li{line-height:28px; list-style-type: none;}
+.left-col ul li:hover a, .right-col ul li:hover a{background-color:#999999; width:200px; color:#ffffff;}
 
-.right-col ul, .left-col ul{display:block;}
-.right-col ul li, .left-col ul li a{ margin-left:5px; list-style-type:none; display:inline;}
-.right-col ul li img{margin-right:5px;}
 .widget{background-color:#009FC2; color:#ffffff; line-height:28px;}
 
 .module-header{color:#ffffff; background-color:#009FC2; line-height:36px; margin-top: 7px; margin-bottom: 7px;}
@@ -105,9 +106,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .form-row input, .form-row select{margin-left:10px;}
 .form-row p label{font-weight:bold; margin-right: 5px; overflow-y:hidden;}
 .form-row p{line-height: 30px;}
-.form-row .form-links{text-decoration: none}
-.form-row .form-links p{font-size: 16px; text-decoration: none}
-.form-row .form-links p:hover{background-color: #009FC2; color: #ffffff;}
+.form-row p a{text-decoration:none; font-weight:bold; color:#009FC2;}
 .form-row table{margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 .form-row table a{margin-left: 5px;}
 

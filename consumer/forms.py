@@ -7,12 +7,6 @@ class DomesticConsumerForm(forms.ModelForm):
         exclude = ["nature_of_business", "company_name", "landline_no", "consumer_type"]
 
 class CorporateConsumerForm(forms.ModelForm):
-    first_name = models.CharField(max_length=50)
-    surname = models.CharField(max_length=50)
-    other_names = models.CharField(max_length=50, blank=True, null = True)
-    mobile_no = models.CharField(max_length=50)
-    id_number = models.CharField(max_length=50, unique=True)
-    pin_no = models.CharField(max_length=50)
     class Meta:
         model = Consumer
         exclude = ["consumer_type"]        
@@ -22,6 +16,11 @@ class ApplicationForm(forms.ModelForm):
         model = Application
         exclude = ["consumer", "reviewed", "approved"]
         
+class PlotForm(forms.ModelForm):
+    class Meta:
+        model = Plot
+        exclude = ['landlord']
+
 class LandlordForm(forms.ModelForm):
     class Meta:
         model = Landlord

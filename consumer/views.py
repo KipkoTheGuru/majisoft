@@ -65,7 +65,7 @@ def application(request, consumer_pk=None, pk=None, action=None, template_name="
         if action in ("create", "read", "update"):
             if pk:
                 data['application'] = get_object_or_404(Application, pk=pk)
-                if action == "U":
+                if action == "update":
                     data['applicationForm'] = ApplicationForm()
             else:
                 data['applicant'] = get_object_or_404(Consumer, pk=consumer_pk)
@@ -86,23 +86,62 @@ def application(request, consumer_pk=None, pk=None, action=None, template_name="
         elif action in ("approve", "reject"):
             application = get_object_or_404(Application, pk=pk)
             application.reviewed = True
-            
             if action == "approve":
                 application.approved = True
                 account = Account(application=application)
                 account.save()
             else:
                 application.approved = False
-                
             application.save()
-            
             return HttpResponseRedirect(application.consumer.get_absolute_url())
     return render_to_response(template_name, data, context_instance=RequestContext(request))
 
-def plot(request, pk=None, action=None, template_name="consumer/plot_form.html"):
+def plot(request, pk=None, landlord_id=None, action=None, template_name="consumer/plot_form.html"):
     data = {}
     if request.method == "GET":
         if action in ("create", "read", "update"):
-            pass
+            if pk:
+                data['plot'] = get_object_or_404(Plot, pk=pk)
+                data['accounts'] = account_set(data['plot'].application_set.filter(reviewed=True, approved=True))
+                if action == "update":
+                    data['plotForm'] = PlotForm(instance=get_object_or_404(Plot, pk=pk))
+            else:
+                data['plotForm'] = PlotForm()
+                data['landlord'] = get_object_or_404(Landlord, pk=landlord_id)
+                if not landlord_id:
+                    data['landlordForm'] = LandlordForm()
+    elif request.method == "POST":
+        if action in ("create", "read", "update"):
+            if pk:
+                plotForm = PlotForm(request.POST, instance=get_object_or_404(Plot, pk=pk))
+            else:
+                plotForm = PlotForm(request.POST)
+                if not landlord_id:
+                    landlordForm = LandlordForm(request.POST)
+            if plotForm.is_valid():
+                plot = plotForm.save(commit=False)
+                if not landlord_id:
+                    if landlordForm.is_valid():
+                        landlord = landlordForm.save()
+                        plot.landlord = landlord
+                    else:
+                        data['landlordForm'] = LandlordForm()
+                else:
+                    plot.landlord = get_object_or_404(Landlord, pk=landlord_id)
+                plot.save()
+                return HttpResponseRedirect(plot.landlord.get_absolute_url())
+    return render_to_response(template_name, data, context_instance=RequestContext(request))
+
+def landlord (request, pk=None, action=None, template_name="consumer/landlord_form.html"):
+    data = {}
+    if request.method == "GET":
+        if action in ("create", "read", "update"):
+            if pk:
+                data['landlord'] = get_object_or_404(Landlord, pk=pk)
+                if action == "update":
+                    data['landlordForm'] = LandlordForm()
+            else:
+                data['plotForm'] = PlotForm()
     elif request.method == "POST":
         pass
+    return render_to_response(template_name, data, context_instance=RequestContext(request))
