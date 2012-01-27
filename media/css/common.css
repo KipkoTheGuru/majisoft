@@ -7,6 +7,7 @@ img{border:none;}
 
 h1,h3,h4,h5,h6 {font-size:100%; color:#666666;}
 h2{font-size:100%; color:#417690;}
+h3{font-size:90%; color:#009FC2;}
 
 p { line-height: 16px; margin: 0 0 18px; font-size:12px; }
 select{min-width:100px;}
@@ -71,7 +72,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .right-col{float:right; min-height:400px; width:220px; float:left; margin-left:5px; border:#AAAAAA solid 1px; margin-top:40px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;}
 
 .left-col ul, .right-col ul{margin-top:36px;}
-.left-col ul li a, .right-col ul li a{color:#009FC2; font-size:14px; font-weight:bold; text-decoration:none; float:right; width:inherit; margin-right:10px;}
+.left-col ul li a, .right-col ul li a{color:#009FC2; font-size:14px; font-weight:bold; text-decoration:none; float:right; width:inherit; margin-right:10px; width: 190px;}
 .right-col ul li a{float:left; margin-left: 20px;}
 .left-col ul li, .right-col ul li{line-height:28px; list-style-type: none;}
 .left-col ul li:hover a, .right-col ul li:hover a{background-color:#999999; width:200px; color:#ffffff;}
@@ -98,6 +99,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 
 .form-capsule{margin:10px 0 5px 0; border-top:#bbbbbb solid 1px;}
 .form-capsule table {min-width: 590px;margin-left: 5px;}
+.form-capsule fieldset{border: #009FC2 solid 1px; margin-top: 5px;}
 .form-row{font-size:12px; border-bottom:#dddddd solid 1px;}
 .required{font-weight:bold;}
 .form-row {min-height: 30px;}
@@ -111,7 +113,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .form-row table a{margin-left: 5px;}
 
 .submit-row{margin-top:10px; border-top:#aaaaaa solid 1px; line-height: 36px;}
-.main-col .shadow {margin-bottom: 50px; }
+.main-col .shadow {}
 
 .active-accounts{background-color:#92CC47; color:#ffffff; line-height:24px;}
 .suspended{background-color:#c63738; color:#ffffff; line-height:24px;}
@@ -122,6 +124,10 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 color:#ffffff; background-color:#999999; text-decoration:none; line-height:20px; font-size:12px; font-weight:bold;}
 .linkbutton:hover{background-color:#009FC2}
 
+#deleterow{margin-top:10px;}
+#delete-link{color:#993333; line-height:24px; font-size:16px; text-decoration:none;}
+#delete-link:hover{text-decoration: underline;}
+
 #approve-application, #activate{color: #ffffff; background-color: #92CC47; line-height: 26px;}
 #approve-application:hover, #activate:hover{color: #92CC47; background-color: #ffffff; border: #92CC47 solid 1px;}
 
@@ -129,3 +135,6 @@ color:#ffffff; background-color:#999999; text-decoration:none; line-height:20px;
 #reject-application:hover, #close:hover{color: #c63738; background-color: #ffffff; border: #c63738 solid 1px;}
 
 .linkbutton img{margin-right:5px;}
+
+/*Django Errors*/
+.errorlist{list-style-type: none}

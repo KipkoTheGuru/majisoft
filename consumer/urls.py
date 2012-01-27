@@ -6,22 +6,10 @@ from django.conf import settings
 from views import *
 
 urlpatterns = patterns('',                       
-    #URLs for Consumer
-    url(r'^view/$', ListView.as_view(queryset=Consumer.objects.all(), context_object_name='consumers',
-                                     template_name='consumer/consumer_list.html'), name= 'consumer-list'),
-    url(r'^consumer-type/$', ListView.as_view(queryset=ConsumerType.objects.all(), context_object_name='consumer_types',
-                                              template_name='consumer/consumer_type.html'), name= 'consumer-type'),
-    url(r'^(?P<consumer_type>[\w-]+)/add/$', consumer, {"template_name":"consumer/consumer_form.html", "action":"C"},
-        name='consumer-add'),
-    url(r'^view/(?P<pk>[\d]+)/$', consumer, {"template_name":"consumer/consumer_details.html", "action":"R"}, name='consumer-details'),
-    url(r'^(?P<consumer_type>[\w-]+)/(?P<pk>[\d]+)/edit/$', consumer,{"template_name":"consumer/consumer_form.html", "action":"U"},
-        name='consumer-edit'),
-    url(r'^(?P<consumer_type>[\w-]+)/(?P<pk>[\d]+)/delete/$', consumer, {"action":"D"}, name='consumer-delete'),
-    
     #URLs for Application
     url(r'^application/list/$', ListView.as_view(queryset=Application.objects.filter(reviewed=False), context_object_name='application_list',
                                      template_name='consumer/application_list.html'), name='application-list'),
-    url(r'^application/rejected/list/$', ListView.as_view(queryset=Application.objects.filter(approved=False, reviewed=False), 
+    url(r'^application/rejected/list/$', ListView.as_view(queryset=Application.objects.filter(approved=False, reviewed=True), 
                                   context_object_name='application_list', template_name='consumer/application_list.html'), name='rejected-list'),
     url(r'^application/(?P<consumer_pk>[\d]+)/add/$', application, {"action":"create"}, name='application-add'),
     url(r'^application/(?P<consumer_pk>[\d]+)/edit/(?P<pk>[\d]+)/$', application, {"action":"update"}, name='application-edit'),
@@ -40,15 +28,27 @@ urlpatterns = patterns('',
     url(r'^plot/details/(?P<pk>[\d]+)/$', plot, {"action":"read", "template_name":"consumer/plot_details.html"}, name='plot-details'),
     url(r'^plot/delete/(?P<pk>[\d]+)/$', plot, {"action":"delete"}, name='plot-delete'),
     
-    #URLs for subzones, zones & regions
-    
     #URLs for Landlords
     url(r'^landlords/$', ListView.as_view(queryset=Landlord.objects.all(), context_object_name='landlords', 
                                           template_name='consumer/landlords_list.html'), name= 'landlord-list'),
+    url(r'^landlord/add/$', landlord, {"action":"create"}, name='landlord-add'),
     url(r'^landlord/edit/(?P<pk>[\d]+)/$', landlord, {"action":"update"}, name='landlord-edit'),
     url(r'^landlord/details/(?P<pk>[\d]+)/$', landlord, {"action":"read", "template_name":"consumer/landlord_details.html"}, 
         name='landlord-details'),
     url(r'^landlord/delete/(?P<pk>[\d]+)/$', landlord, {"action":"delete"}, name='landlord-delete'),
+    
+    #URLs for Consumer
+    url(r'^consumer/view/$', ListView.as_view(queryset=Consumer.objects.all(), context_object_name='consumers',
+                                     template_name='consumer/consumer_list.html'), name= 'consumer-list'),
+    url(r'^consumer/consumer-type/$', ListView.as_view(queryset=ConsumerType.objects.all(), context_object_name='consumer_types',
+                                              template_name='consumer/consumer_type.html'), name= 'consumer-type'),
+    url(r'^consumer/(?P<consumer_type>[\w-]+)/add/$', consumer, {"template_name":"consumer/consumer_form.html", "action":"C"},
+        name='consumer-add'),
+    url(r'^consumer/view/(?P<pk>[\d]+)/$', consumer, {"template_name":"consumer/consumer_details.html", "action":"R"}, name='consumer-details'),
+    url(r'^consumer/(?P<consumer_type>[\w-]+)/(?P<pk>[\d]+)/edit/$', consumer,{"template_name":"consumer/consumer_form.html", "action":"U"},
+        name='consumer-edit'),
+    url(r'^consumer/delete/(?P<pk>[\d]+)/$', consumer, {"action":"D"}, name='consumer-delete'),
+    
 )
 
 

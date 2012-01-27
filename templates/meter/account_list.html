@@ -1,0 +1,36 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>List of Plots:</h1>
+		<p><a href="{% url plot-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Plot</a></p>
+		<p>
+			<label for="search">Search</label>
+			<input type="text" id="search" name="search"/>
+		</p>
+		<div class="form-capsule">
+			<table width="595">
+				<tr class="table-header">
+					<th width="230" scope="col"><div align="left">Account No</div></th>
+					<th width="230" scope="col">Account Holder</th>
+					<th width="100" scope="col">Date Activated</th>
+				</tr>
+				{% for account in accounts %}
+					<tr>
+						<td><a href="{% url account-details account.id %}">{{ account.account_no }}</a></td>
+						{% if landlord.company_name %}
+							<td><a href="{% url consumer-details account.application.consumer.id %}">{{ account.application.consumer.company_name }}</a></td>
+						{% else %}
+							<td><a href="{% url consumer-details account.application.consumer.id %}">{{ account.application.consumer.full_name }}</a></td>
+						{% endif %}
+						<td><a href="{% url landlord-plot-add landlord.id %}">New Plot</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

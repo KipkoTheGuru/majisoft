@@ -1,4 +1,4 @@
-{% extends "base_consumer.html" %}
+{% extends "base_settings.html" %}
 
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
@@ -12,9 +12,9 @@
 		<div class="form-capsule">
 			<table>
 				<tr>
-					<th>Plot No</th>
-					<th>Landlord</th>
-					<th>Street</th>
+					<th width="200" scope="col">Plot No</th>
+					<th width="230" scope="col">Landlord</th>
+					<th width="130" scope="col">Street</th>
 				</tr>
 				{% for plot in plots %}
 				<tr>
@@ -35,13 +35,3 @@
 		</div>
 	</div>
 {% endblock main_column %}
-
-{% block right_column %}
-	<div class="right-col">
-		<ul>
-	        <li><a href="{% url landlord-list %}"> Landlords </a></li>
-			<li><a href="#"> Add New Plot </a></li>
-			<li><a href="#"> All Plots</a></li>
-	    </ul>
-	</div>
-{% endblock right_column %}

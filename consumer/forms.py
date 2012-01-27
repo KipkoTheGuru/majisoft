@@ -7,6 +7,11 @@ class DomesticConsumerForm(forms.ModelForm):
         exclude = ["nature_of_business", "company_name", "landline_no", "consumer_type"]
 
 class CorporateConsumerForm(forms.ModelForm):
+    first_name = models.CharField(max_length=50)
+    surname = models.CharField(max_length=50)
+    other_names = models.CharField(max_length=50, blank=True, null = True)
+    company_name = forms.CharField(max_length=50)
+    nature_of_business = forms.CharField(widget=forms.Textarea)
     class Meta:
         model = Consumer
         exclude = ["consumer_type"]        

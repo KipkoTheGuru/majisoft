@@ -1,10 +1,10 @@
-{% extends "base_consumer.html" %}
+{% extends "base_settings.html" %}
 
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
 		<h1> Plot Details 
-			<a href="{% url landlord-edit plot.id %}" class="linkbutton">
+			<a href="{% url plot-edit plot.id %}" class="linkbutton">
             	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Plot</div>
             </a></h1>
 		<div class="form-capsule">
@@ -21,30 +21,35 @@
 					</a>
 				</p>
 			</div>
-			<div class="form-row">
-            	<div align="center"><h2 class="active-accounts">Current Served Consumers</h2></div>
-            	<table>
-            		<tr>
-            			<th>Consumer</th>
-            			<th>Account No</th>
-            			<th>Last Activated</th>
-            		</tr>
-                    {% for account in accounts %}
-                    	<tr>
-                    		<td>
-                    			<a href="{% url consumer-details account.application.consumer.id %}">
-                    				{{ account.application.consumer.full_name }}</td>
-                    			</a>
-                    		<td>
-                    			<a href="{% url account-details account.id %}">
-                    				{{ account.account_no }}
-                    			</a>
-                    		</td>
-            				<td>{{ account.date_activated }}</td>
-                    	</tr>
-                    {% endfor %}
-                </table>
-            </div>
+			{% if accounts %}
+				<div class="form-row">
+	            	<div align="center"><h2 class="active-accounts">Current Served Consumers</h2></div>
+	            	<table>
+	            		<tr>
+	            			<th>Consumer</th>
+	            			<th>Account No</th>
+	            			<th>Last Activated</th>
+	            		</tr>
+	                    {% for account in accounts %}
+	                    	<tr>
+	                    		<td>
+	                    			<a href="{% url consumer-details account.application.consumer.id %}">
+	                    				{{ account.application.consumer.full_name }}</td>
+	                    			</a>
+	                    		<td>
+	                    			<a href="{% url account-details account.id %}">
+	                    				{{ account.account_no }}
+	                    			</a>
+	                    		</td>
+	            				<td>{{ account.date_activated }}</td>
+	                    	</tr>
+	                    {% endfor %}
+	                </table>
+	            </div>
+            {% endif %}
 		</div>
 	</div>
 {% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

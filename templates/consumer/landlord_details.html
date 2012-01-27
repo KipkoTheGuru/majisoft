@@ -1,7 +1,7 @@
-{% extends "base_consumer.html" %}
+{% extends "base_settings.html" %}
 
 {% block main_column %}
-	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div align="center"><h1 class="module-header">Landlord Details</h1></div>
 	<div class="shadow">
 		<h1>
 			{% if landlord.company_name %}
@@ -39,6 +39,32 @@
 				<p><label>Postal Address:</label> {{ landlord.full_address }}</p>
 				<p><label>{% if landlord.company_name %}Director's {% endif %} PIN No:</label> {{ landlord.pin_no }}</p>
 			</div>
+			<div class="form-row">
+            	<div align="center"><h2 class="application">Plots owned</h2></div>
+            	<table>
+            		<tr>
+            			<th>Plot No</th>
+            			<th style="min-width: 90px;">Street</th>
+            			<th>Plot Location</th>
+            			<th>No of Consumers</th>
+            		</tr>
+                    {% for plot in plots %}
+                    	<tr>
+                    		<td>
+                    			<a href="{% url plot-details plot.id %}">
+                    				{{ plot.plot_no }}
+                    			</a>
+                    		</td>
+            				<td>{{ plot.street }}</td>
+            				<td>{{ plot.plot_location }}</td>
+            				<td></td>
+                    	</tr>
+                    {% endfor %}
+                </table>
+            </div>
 		</div>
 	</div>
 {% endblock main_column %}
+{% block right_column %}
+
+{% endblock right_column %}

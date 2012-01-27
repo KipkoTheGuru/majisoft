@@ -1,0 +1,18 @@
+{% extends "base_skeleton.html" %}
+
+<title>{% block title %} {{ block.super }} Consumer {% endblock title%} |</title>
+
+<div class="left-col">
+{% block left_col %}
+	<ul>
+	        <li><a href="{% url landlord-list %}"> Landlords </a></li>
+			<li><a href="{% url landlord-add %}"> Add Landlord </a></li>
+			<li><a href="{% url plot-list %}"> Plots</a></li>
+			<li><a href="{% url plot-add %}"> Add Plot </a></li>
+	    </ul>
+{% endblock left_col %}
+</div>
+
+{% block right_column %}
+
+{% endblock right_column %}

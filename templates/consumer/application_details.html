@@ -15,6 +15,25 @@
 				return false;
 			});
 			$("#reject-application").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url application-reject application.pk %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url consumer-details application.consumer.pk %}");
+					  }
+				});
+				return false;
+			});
+			$("#delete-link").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url application-delete application.id %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url consumer-details application.consumer.pk %}");
+					  }
+				});
 				return false;
 			});
 		});
@@ -25,12 +44,14 @@
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
 		<h1>Application Details
+			{% if not application.reviewed %}
 			<a href="#" class="linkbutton" id="reject-application">
 	        	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />Reject</div>
 	        </a>
 			<a href="#" class="linkbutton" id="approve-application">
 	        	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-yes.gif" />Approve</div>
 	        </a>
+	        {% endif %}
 		</h1>
 		<div class="form-capsule">
 			<h1>
@@ -57,4 +78,10 @@
 			</div>
 		</div>
 	</div>
+	{% if not application.reviewed %}
+	<div id="deleterow" class="shadow">
+		<p><a href="#" id="delete-link"><img src="{{ MEDIA_URL }}images/icons/icon_deletelink.gif" /><strong> Delete</strong> </a></p>
+	</div>
+	{% endif %}
+	
 {% endblock main_column %}

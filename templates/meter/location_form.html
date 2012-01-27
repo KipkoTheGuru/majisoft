@@ -1,0 +1,38 @@
+{% extends "base_settings.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Settings Module</h1></div>
+	<div class="shadow">
+		<h1>{% if regionForm %}
+				Region
+			{% elif zoneForm %}
+				Zone
+			{% elif subzoneForm %}
+				Sub-Zone
+			{% endif %}
+			Form
+		</h1>
+		<div class="form-capsule">
+			<form action="" method="post">
+				{% csrf_token %}
+				{% for field in locationForm %}
+					<div class="form-row">
+						{% if field.errors %}
+							<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
+						{% endif %}
+						<p>{{ field.label_tag }}: {{ field }}</p>
+						{% if field.errors %}
+							<p>{{ field.errors }}</p></div>
+						{% endif %}
+					</div>
+				{% endfor %}
+				<div class="submit-row" align="center">
+                	<input type="submit" value="Save" class="btn-save" name="save"/>
+                </div>
+			</form>
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

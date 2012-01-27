@@ -1,5 +1,23 @@
 {% extends "base_consumer.html" %}
 
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#delete-link").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url consumer-delete consumer.id %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url consumer-list %}");
+					  }
+				});
+				return false;
+			});
+		});
+	</script>
+{% endblock extrajs %}
+
 <title>{% block title %} {{ block.super }} | Details {% endblock title%} |</title>
 
 <div class="main-col">
@@ -104,9 +122,8 @@
                         		<th>Service-line diameter</th>
                         		<th style="min-width: 110px;">Sub-zone</th>
                         		<th>Plot No</th>
-                        		<th>Approved?</th>
                         	</tr>
-                        	{% for application in applications %}
+                        	{% for application in unreviewed_applications %}
                             	<tr>
                             		<td>
                             			<a href="{% url application-details application.id%}">
@@ -116,13 +133,6 @@
                     				<td>{{ application.service_line }}</td>
                     				<td>{{ application.plot_no.sub_zone.name }}</td>
                     				<td>{{ application.plot_no.plot_no }}</td>
-                    				<td><div align="center"> {% if application.approved %}
-                    						<img src="{{ MEDIA_URL }}images/icons/icon-yes.gif" />
-                						{% else %}
-                							<img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />
-            							{% endif %}
-            							</div>
-                					</td>
                             	</tr>
                         	{% endfor %}
                         </table>
@@ -156,5 +166,11 @@
 				</tr>
 			</div>
         </div>
+        
+        {% if not suspended_accounts and not unreviewed_applications and not inactive_accounts and not active_accounts %}
+		<div id="deleterow" class="shadow">
+			<p><a href="#" id="delete-link"><img src="{{ MEDIA_URL }}images/icons/icon_deletelink.gif" /><strong> Delete</strong> </a></p>
+		</div>
+		{% endif %}
 	{% endblock main_column %}
 </div>	

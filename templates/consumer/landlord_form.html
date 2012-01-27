@@ -3,30 +3,19 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
-		<h1>Plot Form</h1>
+		<h1>Landlord Form</h1>
 		{% if plot %}
 		<p> You are editing <strong>{% if landlord.company_name %}
 				{{ landlord.company_name }}'s
 			{% else %}
 				{{ landlord.full_name }}'s
-			{% endif %}</strong>plot
-		</p>
-		{% else %}
-		<p> You are adding a new plot under <strong>{% if landlord.company_name %}
-				{{ landlord.company_name }}'s
-			{% else %}
-				{{ landlord.full_name }}'s
-			{% endif %}</strong>name.
+			{% endif %}</strong>details
 		</p>
 		{% endif %}
 		<div class="form-capsule">
 			<form action="" method="post">
 				{% csrf_token %}
-				{% if landlordForm %}
-					<fieldset>
-						<legend><h3>Plot Details</h3></legend>
-				{% endif  %}
-				{% for field in plotForm %}
+				{% for field in landlordForm %}
 					<div class="form-row">
 						{% if field.errors %}
 							<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
@@ -37,25 +26,6 @@
 						{% endif %}
 					</div>
 				{% endfor %}
-				{% if landlordForm %}
-					</fieldset>
-				{% endif %}
-				{% if landlordForm %}
-				<fieldset>
-					<legend><h3>Landlord Details</h3></legend>
-					{% for field in landlordForm %}
-						<div class="form-row">
-							{% if field.errors %}
-								<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
-							{% endif %}
-							<p>{{ field.label_tag }}: {{ field }}</p>
-							{% if field.errors %}
-								<p>{{ field.errors }}</p></div>
-							{% endif %}
-						</div>
-					{% endfor %}
-					</fieldset>
-				{% endif %}
 				<div class="submit-row" align="center">
                 	<input type="submit" value="Save" class="btn-save" name="save"/>
                 </div>

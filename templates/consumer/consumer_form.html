@@ -5,16 +5,17 @@
 	<div class="shadow">
 		<h1>Add Consumer</h1>
 		<div class="form-capsule">
-			<form action="{% url consumer-add consumer_type %}" method="post" >
+			<form action="" method="post" >
 				{% csrf_token %}
 				{% for field in consumerForm %}
 				<div class="form-row">
 					{% if field.errors %}
-						{% for error in field.errors %} 
-							{{ field.error }}
-						{% endfor %}
+						<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
 					{% endif %}
 					<p>{{ field.label_tag }}: {{ field }}</p>
+					{% if field.errors %}
+						<p>{{ field.errors }}</p></div>
+					{% endif %}
 				</div>
 				{% endfor %}
 				<div class="submit-row" align="center">

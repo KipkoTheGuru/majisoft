@@ -19,7 +19,7 @@ class Consumer(models.Model):
     postal_address = models.CharField(max_length=100)
     postal_code = models.CharField(max_length=20, blank=True, null = True)
     town = models.CharField('Town/City', max_length=50)
-    id_number = models.CharField('National ID/Passport No', max_length=50, unique=True)
+    id_number = models.CharField('National ID/Passport', max_length=50, unique=True)
     identification_mode = models.SmallIntegerField(choices=IDENTIFICATION)
     pin_no = models.CharField(max_length=50)
     nationality = models.CharField(max_length=50, default='KE', choices=nations.COUNTRIES)
@@ -112,7 +112,7 @@ class Landlord(models.Model):
     first_name = models.CharField(max_length=50)
     surname = models.CharField(max_length=50)
     other_names = models.CharField(max_length=50, blank=True, null = True)
-    id_number = models.CharField('National ID/Passport No', max_length=50, unique=True)
+    id_number = models.CharField('National ID/Passport', max_length=50, unique=True)
     identification_mode = models.SmallIntegerField(choices=IDENTIFICATION)
     nationality = models.CharField(max_length=50, default='KE', choices=nations.COUNTRIES)
     name_of_company = models.CharField(max_length=50, blank=True, null = True)
@@ -143,8 +143,9 @@ class Landlord(models.Model):
     @property
     def country_of_origin(self):
         for country in nations.COUNTRIES:
-            if country.__get__(0) == self.nationality:
-                return "%s" % country.__get__(1)
+            for chosen_country in country:
+                if chosen_country == self.nationality:
+                    return country.__getitem__(1)
     
     @models.permalink
     def get_absolute_url(self):

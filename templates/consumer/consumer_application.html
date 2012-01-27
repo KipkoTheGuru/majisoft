@@ -21,8 +21,13 @@
 				{% csrf_token %}
 				{% for field in applicationForm%}
 				<div class="form-row">
-					{{ field.error }}
+					{% if field.errors %}
+						<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
+					{% endif %}
 					<p>{{ field.label_tag }}: {{ field }}</p>
+					{% if field.errors %}
+						<p>{{ field.errors }}</p></div>
+					{% endif %}
 				</div>
 				{% endfor %}
 				<div class="submit-row" align="center">
