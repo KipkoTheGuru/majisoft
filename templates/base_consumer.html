@@ -7,7 +7,8 @@
 	<ul>
     	<li><a href="{% url consumer-list %}">View Consumers</a></li>
         <li><a href="{% url consumer-type %}">Register Consumer</a></li>
-        <li><a href="#"> All Accounts</a></li>
+        <li><a href="{% url consumer-type-list %}">Consumer-Type</a></li>
+        <li><a href="{% url consumer-type-add %}">Add Consumer-Type</a></li>
 		<li><a href="{% url closed-account-list %}"> Closed Accounts</a></li>
 		<li><a href="{% url application-list %}"> All Account Applications</a></li>
 		<li><a href="{% url rejected-list %}"> Rejected Applications</a></li>

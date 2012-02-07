@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+<title>{% block title %}{{ block.super }} | Login {% endblock title %}</title>
+
+{% block container %}
+	<div class="main-content" align="center">
+	    <div class="login" style="line-height:40px;">
+	    	<img src="{{ MEDIA_URL }}images/logo.png" />
+	        <fieldset>
+	        	<legend>Enter Your Credentials</legend>
+	            <form id="loginForm" action="{% if next %}?next={{ next }}{% endif %}" method="post">
+	            	{% csrf_token %}
+	            	<div class="form-row">
+	            		{% if form.username.errors %}
+	            			<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
+	            		{% endif %} 
+		                <p><label for="username" >Username:</label>
+		                <input type="text" name="username" id="username" class="input-text"/></p>
+		                {% if form.username.errors %} 
+		                	<p>{{ form.username.html_error_list }}</p></div>
+		                {% endif %}
+	                </div>
+	                <div class="form-row">
+	                	{% if form.password.errors %}
+	            			<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
+	            		{% endif %} 
+		                <p><label for="password" >Password:</label>
+		                <input type="password" name="password" id="password" class="input-text"/></p>
+		                {% if form.password.errors %} 
+		                	<p>{{ form.password.html_error_list }}</p></div>
+		                {% endif %}
+	                </div>
+	                <div class="submit-row" align="center">
+	                	<input type="submit" value="Login" class="btn-save" name="save"/>
+	                </div>
+	            </form>
+	        </fieldset>
+	    </div>
+	</div>
+{% endblock container %}

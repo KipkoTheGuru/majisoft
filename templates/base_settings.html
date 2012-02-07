@@ -6,9 +6,12 @@
 {% block left_col %}
 	<ul>
 	        <li><a href="{% url landlord-list %}"> Landlords </a></li>
-			<li><a href="{% url landlord-add %}"> Add Landlord </a></li>
 			<li><a href="{% url plot-list %}"> Plots</a></li>
-			<li><a href="{% url plot-add %}"> Add Plot </a></li>
+			<li><a href="{% url region-list %}"> Regions </a></li>
+			<li><a href="{% url zone-list %}"> Zones </a></li>
+			<li><a href="{% url subzone-list %}"> Sub-zones </a></li>
+			<li><a href="{% url fee-list %}">Fees and Charges</a></li>
+			<li><a href="{% url payment-mode-list %}">Payment Modes</a></li>
 	    </ul>
 {% endblock left_col %}
 </div>

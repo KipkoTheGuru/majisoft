@@ -40,6 +40,7 @@ class Account(models.Model):
     is_active = models.BooleanField(default=False)
     closed = models.BooleanField(default=False)
     date_activated = models.DateTimeField("Last Activated On", editable=False, blank=True, null=True)
+    date_closed = models.DateTimeField("Closed On", editable=False, blank=True, null=True)
     
     class Meta:
         db_table = "Account"

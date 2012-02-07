@@ -16,6 +16,15 @@ class CorporateConsumerForm(forms.ModelForm):
         model = Consumer
         exclude = ["consumer_type"]        
 
+class ConsumerTypeForm(forms.ModelForm):
+    class Meta:
+        model = ConsumerType 
+
+class ConsumptionForm(forms.ModelForm):
+    class Meta:
+        model = Consumption
+        exclude = ["consumer_type"]
+        
 class ApplicationForm(forms.ModelForm):
     class Meta:
         model = Application

@@ -1,0 +1,45 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>
+			<a href="{% url consumer-details consumer.pk %}" style="text-decoration: none;">
+				{% if consumer.company_name %}
+            		{{ consumer.company_name }}
+            	{% else %}
+					{{ consumer.full_name }} 
+				{% endif %}
+			</a>
+			<a href="" class="linkbutton">
+            	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Print History</div>
+            </a>
+		</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<div align="center"><h2 class="application">Financial History</h2></div>
+			</div>
+			<table>
+				<tr>
+					<th width="285">Invoices</th>
+					<th width="285">Payments</th>
+				</tr>
+				<tr>
+					{% for invoice in invoices %}
+						<td>{{ invoice.total }}  ({{ invoice.date }})</td>
+						<td>
+							<ul>{% if invoice.payment %}
+									{% for payment in invoice.payment %}
+										<li>{{ payment.amount_paid }} {{ payment.date_paid }}</li>
+									{% endfor %}
+								{% else %}
+								<i>Not Yet</i>
+								{% endif %}
+							</ul>
+						</td>
+					{% endfor %}
+				</tr>
+			</table>
+		</div>
+	</div>
+{% endblock main_column %}

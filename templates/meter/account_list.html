@@ -3,7 +3,7 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
-		<h1>List of Plots:</h1>
+		<h1>List of {% if closed_accounts %}Closed{% endif %} Accounts:</h1>
 		<p><a href="{% url plot-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Plot</a></p>
 		<p>
 			<label for="search">Search</label>
@@ -14,19 +14,34 @@
 				<tr class="table-header">
 					<th width="230" scope="col"><div align="left">Account No</div></th>
 					<th width="230" scope="col">Account Holder</th>
-					<th width="100" scope="col">Date Activated</th>
+					<th width="100" scope="col">Date {% if closed_accounts %}Closed{% else %}Activated{% endif %}</th>
 				</tr>
+				{% if accounts %}
 				{% for account in accounts %}
 					<tr>
 						<td><a href="{% url account-details account.id %}">{{ account.account_no }}</a></td>
-						{% if landlord.company_name %}
+						{% if account.application.consumer.company_name %}
 							<td><a href="{% url consumer-details account.application.consumer.id %}">{{ account.application.consumer.company_name }}</a></td>
 						{% else %}
 							<td><a href="{% url consumer-details account.application.consumer.id %}">{{ account.application.consumer.full_name }}</a></td>
 						{% endif %}
-						<td><a href="{% url landlord-plot-add landlord.id %}">New Plot</a></td>
+						<td>{{ account.date_activated }}</td>
 					</tr>
 				{% endfor %}
+				{% endif %}
+				{% if closed_accounts %}
+				{% for account in closed_accounts %}
+					<tr>
+						<td><a href="{% url account-details account.id %}">{{ account.account_no }}</a></td>
+						{% if account.application.consumer.company_name %}
+							<td><a href="{% url consumer-details account.application.consumer.id %}">{{ account.application.consumer.company_name }}</a></td>
+						{% else %}
+							<td><a href="{% url consumer-details account.application.consumer.id %}">{{ account.application.consumer.full_name }}</a></td>
+						{% endif %}
+						<td>{{ account.date_closed }}</td>
+					</tr>
+				{% endfor %}
+				{% endif %}
 			</table>
 		</div>
 	</div>

@@ -10,6 +10,9 @@ class ConsumerAdmin(admin.ModelAdmin):
 class ConsumerTypeAdmin(admin.ModelAdmin):
     list_display = ["consumer_type"]
     search_fields = ["consumer_type"]
+
+class ConsumptionAdmin(admin.ModelAdmin):
+    list_display = ["consumer_type", "max_unit", "water", "sewerage"]
     
 class TitleAdmin(admin.ModelAdmin):
     list_display = ["name"]
@@ -32,6 +35,7 @@ class FeedbackAdmin(admin.ModelAdmin):
 
 admin.site.register(Consumer, ConsumerAdmin)
 admin.site.register(ConsumerType, ConsumerTypeAdmin)
+admin.site.register(Consumption, ConsumptionAdmin)
 admin.site.register(Title, TitleAdmin)
 admin.site.register(Application, ApplicationAdmin)
 admin.site.register(Plot, PlotAdmin)

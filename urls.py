@@ -7,18 +7,18 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$', ListView.as_view(queryset=Application.objects.filter(reviewed=False), context_object_name='latest_applications',
-                                template_name='home.html'), name='home'),
-    url(r'^login/$', login, name='login'),
+    url(r'^$', index, name='index'),
     url(r'^meter/', include('meter.urls')),    
-    url(r'^core/', include('consumer.urls')),
     url(r'^hr/', include('hr.urls')),
     url(r'^finance/', include('payments.urls')),
+    url(r'^core/', include('consumer.urls')),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^dashboard/$', ListView.as_view(queryset=Application.objects.filter(reviewed=False), context_object_name='latest_applications',
+                                template_name='home.html'), name='home'),
+    url(r'^login/$', login, {'template_name': 'login.html'}, name='login'),
+    url(r'^logout/$', logout, name='logout'),
 )
-
 if settings.DEBUG:
     urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', 
-         {'document_root': settings.MEDIA_ROOT}),
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     )

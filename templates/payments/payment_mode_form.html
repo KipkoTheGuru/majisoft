@@ -3,21 +3,11 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Settings Module</h1></div>
 	<div class="shadow">
-		<h1>{% if regionForm %}
-				Region
-			{% endif %}
-			{% if zoneForm %}
-				Zone
-			{% endif %}
-			{% if subzoneForm %}
-				Sub-Zone
-			{% endif %}
-			Form
-		</h1>
+		<h1>Payment Mode Form</h1>
 		<div class="form-capsule">
 			<form action="" method="post">
 				{% csrf_token %}
-				{% for field in locationForm %}
+				{% for field in paymentModeForm %}
 					<div class="form-row">
 						{% if field.errors %}
 							<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">

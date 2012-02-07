@@ -55,6 +55,15 @@ class Consumer(models.Model):
     def get_absolute_url(self):
         return ("consumer-details", [str(self.pk)])
 
+class Consumption(models.Model):
+    consumer_type  = models.ForeignKey("ConsumerType")
+    max_unit = models.IntegerField(max_length=50)
+    water = models.DecimalField("Water (Ksh. per unit)", max_digits=10, decimal_places=2)
+    sewerage = models.DecimalField(max_digits=10, decimal_places=2)
+    class Meta:
+        db_table = "Consumption"
+        ordering = ["max_unit"]
+        
 class ConsumerType(models.Model):
     consumer_type = models.CharField(max_length=50)
     
@@ -63,7 +72,7 @@ class ConsumerType(models.Model):
     
     def __unicode__(self):
         return "%s." % self.consumer_type
-
+        
 class Title(models.Model):
     name = models.CharField(max_length=50)
     

@@ -1,0 +1,34 @@
+{% extends "base_settings.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Settings Module</h1></div>
+	<div class="shadow">
+		<h1>List of Payment Modes:</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<p><a href="{% url payment-mode-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Payment Mode </a></p>
+			</div>
+			<p>
+				<label for="search">Search</label>
+				<input type="text" id="search" name="search"/>
+			</p>
+			<table width="595">
+				<tr class="table-header">
+					<th width="200" scope="col"><div align="left">Payment Mode</div></th>
+					<th width="330" scope="col">Payment Mode Description</th>
+				</tr>
+				{% if payment_modes %}
+					{% for payment_mode in payment_modes %}
+						<tr>
+							<td><a href="{% url payment-mode-details payment_mode.id %}">{{ payment_mode.name }}</a></td>
+							<td>{{ payment_mode.description }}</a></td>
+						</tr>
+					{% endfor %}
+				{% endif %}
+			</table>
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

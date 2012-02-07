@@ -1,0 +1,36 @@
+{% extends "base_settings.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Settings Module</h1></div>
+	<div class="shadow">
+		<h1>List of Fees & Charges:</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<p><a href="{% url fee-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Fee/Charges </a></p>
+			</div>
+			<p>
+				<label for="search">Search</label>
+				<input type="text" id="search" name="search"/>
+			</p>
+			<table width="595">
+				<tr class="table-header">
+					<th width="130" scope="col"><div align="left">Fee Type</div></th>
+					<th width="330" scope="col">Fee Description</th>
+					<th width="100" scope="col">Amount (Ksh.)</th>
+				</tr>
+				{% if fees %}
+					{% for fee in fees %}
+						<tr>
+							<td><a href="{% url fee-details fee.id %}">{{ fee.name }}</a></td>
+							<td>{{ fee.description }}</a></td>
+							<td>{{ fee.fee }}</td>
+						</tr>
+					{% endfor %}
+				{% endif %}
+			</table>
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

@@ -12,6 +12,9 @@
 		</h1>
 		<div class="form-capsule">
 			<div class="form-row">
+				<p><a href="{% url landlord-plot-add landlord.pk %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Plot</a></p>
+			</div>
+			<div class="form-row">
 				{% if landlord.company_name %}
 					<p><label>Director's Name</label> {{ landlord.full_name }}</p>
 				{% endif %}

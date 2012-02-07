@@ -1,0 +1,45 @@
+{% extends "base_settings.html" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#delete-link").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url fee-delete fee.id %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url fee-list %}");
+					  }
+				});
+				return false;
+			});
+		});
+	</script>
+{% endblock extrajs %}
+
+<title>{% block title %} {{ fee.name }} | Details {% endblock title%} |</title>
+
+<div class="main-col">
+	{% block main_column %}
+		<div align="center"><h1 class="module-header">Settings Module</h1></div>
+		<div class="shadow">
+            <h1>{{ fee.name }}
+				<a href="{% url fee-edit fee.id %}" class="linkbutton">
+                	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Fee</div>
+                </a>
+			</h1>
+            <div class="form-capsule">
+				<div class="form-row">
+                	<p><label>Fee Type</label> {{ fee.get_fee_type }}</p>
+					<p><label>Fee Amount</label> Ksh. {{ fee.fee }}</p>
+					<p><label>Description:</label></p><br /><br />
+					<div class="description"><p>{{ fee.description }}</p></div>
+                </div>
+			</div>
+        </div>
+		<div id="deleterow" class="shadow">
+			<p><a href="#" id="delete-link"><img src="{{ MEDIA_URL }}images/icons/icon_deletelink.gif" /><strong> Delete</strong> </a></p>
+		</div>
+	{% endblock main_column %}
+</div>	

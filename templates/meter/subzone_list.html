@@ -1,0 +1,34 @@
+{% extends "base_settings.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Settings Module</h1></div>
+	<div class="shadow">
+		<h1>List of Zones:</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<p><a href="{% url subzone-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Sub-zone</a></p>
+			</div>
+			<p>
+				<label for="search">Search</label>
+				<input type="text" id="search" name="search"/>
+			</p>
+			<table width="595">
+				<tr class="table-header">
+					<th width="130" scope="col"><div align="left">Sub-Zone No</div></th>
+					<th width="330" scope="col">Sub-Zone Name</th>
+					<th width="100" scope="col">No Of Consumers</th>
+				</tr>
+				{% for subzone in subzones %}
+					<tr>
+						<td><a href="{% url subzone-details subzone.pk %}">{{ subzone.pk }}</a></td>
+						<td style="margin-left: 10px;"><a href="{% url subzone-details subzone.pk %}">{{ subzone.name }}</a></td>
+						<td><a href="#">3</a></td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

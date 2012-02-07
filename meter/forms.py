@@ -19,14 +19,19 @@ class MeterReadingForm(forms.ModelForm):
         model = MeterReading
         exclude = ["employee", "date_recorded"]
 
-class SubZoneForm(forms.ModelForm):
+class SubZoneConForm(forms.ModelForm):
     class Meta:
         model = SubZone
         exclude = ["zone"]
 
+class SubZoneSinForm(forms.ModelForm):
+    class Meta:
+        model = SubZone
+
 class ZoneConRegionForm(forms.ModelForm):
     class Meta:
         model = Zone
+        exclude = ["region"]
         
 class ZoneSinRegionForm(forms.ModelForm):
     class Meta:

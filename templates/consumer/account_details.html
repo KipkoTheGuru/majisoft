@@ -16,17 +16,19 @@
 					return false;
 				});
 			{% endif %}
-			$("#close").click(function(){
-				$.ajax({
-					  type: 'POST',
-					  url: "{% url account-close account.pk %}",
-					  data: {},
-					  success:function(){
-					  	window.location.replace("{% url consumer-details account.application.consumer.pk %}");
-					  }
+			{% if not account.closed %}
+				$("#close").click(function(){
+					$.ajax({
+						  type: 'POST',
+						  url: "{% url account-close account.pk %}",
+						  data: {},
+						  success:function(){
+						  	window.location.replace("{% url consumer-details account.application.consumer.pk %}");
+						  }
+					});
+					return false;
 				});
-				return false;
-			});
+			{% endif %}
 		});
 	</script>
 {% endblock extrajs %}
@@ -35,18 +37,18 @@
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
 		<h1>
-			<a href="{% url consumer-details account.application.consumer.id%}" style="text-decoration: none;">
-				<h1>
+			<a href="{% url consumer-details account.application.consumer.pk %}" style="text-decoration: none;">
 				{% if account.application.consumer.company_name %}
 	        		{{ account.application.consumer.company_name }}
 	        	{% else %}
 					{{ account.application.consumer.full_name }} 
 				{% endif %}
-				</h1>
 			</a>
-            <a href="" class="linkbutton" id="close">
-            	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />Close account</div>
-            </a>
+			{% if not account.closed %}
+	            <a href="" class="linkbutton" id="close">
+	            	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-no.gif" />Close account</div>
+	            </a>
+            {% endif %}
             {% if account.closed %}
 	            <a href="#" class="linkbutton" id="activate">
 		        	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon-yes.gif" />Activate</div>
@@ -56,6 +58,7 @@
 		<div class="form-capsule">
 			{% if account.closed %}
 				<div class="form-row">
+					<p><label>Status</label> Closed (<i>On {{ account.date_closed}}</i>)</p>
 					<p><label>Meter Serial No</label> {% if account.meter_no %}{{ account.meter_no }}
 						{% else %}
 						N/A

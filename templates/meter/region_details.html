@@ -1,0 +1,67 @@
+{% extends "base_settings.html" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#delete-link").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url region-delete region.id %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url region-list %}");
+					  }
+				});
+				return false;
+			});
+		});
+	</script>
+{% endblock extrajs %}
+
+<title>{% block title %} {{ region.name }} | Details {% endblock title%} |</title>
+
+<div class="main-col">
+	{% block main_column %}
+		<div align="center"><h1 class="module-header">Settings Module</h1></div>
+		<div class="shadow">
+            <h1>{{ region.name }} Region
+				<a href="{% url region-edit region.id %}" class="linkbutton">
+                	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Region</div>
+                </a>
+			</h1>
+			<div>
+				<p>
+					<a href="{% url zone-region-add region.id %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" />Add Zone</a>
+				</p>
+			</div>
+            <div class="form-capsule">
+				{% if zones %}
+				<div class="form-row">
+                	<div align="center"><h2 class="application">All Zones under this Region</h2></div>
+                	<table>
+                		<tr class="table-header">
+							<th scope="col" width="285"><div align="left">Region No</div></th>
+							<th scope="col" width="285">Zone Name</th>
+						</tr>
+						{% for zone in zones %}
+							<tr>
+								<td><a href="{% url zone-details zone.pk %}">{{ zone.pk }}</a></td>
+								<td><a href="{% url zone-details zone.pk %}" style="margin-left: 5px;">{{ zone.name }}</a></td>
+							</tr>
+						{% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                	<div class="form-row">
+            			<p><strong>There are no zones in this Region. Click on the Add zones link above to add a new zone</strong></p>
+            		</div>
+                {% endif %}
+			</div>
+        </div>
+        {% if not zones %}
+			<div id="deleterow" class="shadow">
+				<p><a href="#" id="delete-link"><img src="{{ MEDIA_URL }}images/icons/icon_deletelink.gif" /><strong> Delete</strong> </a></p>
+			</div>
+		{% endif %}
+	{% endblock main_column %}
+</div>	

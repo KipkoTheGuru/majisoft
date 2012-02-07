@@ -3,13 +3,15 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Settings Module</h1></div>
 	<div class="shadow">
-		<h1>List of Plots:</h1>
-		<p><a href="{% url plot-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Plot</a></p>
-		<p>
-			<label for="search">Search</label>
-			<input type="text" id="search" name="search"/>
-		</p>
+		<h1>List of Regions:</h1>
 		<div class="form-capsule">
+			<div class="form-row">
+				<p><a href="{% url region-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Region</a></p>
+			</div>
+			<p>
+				<label for="search">Search</label>
+				<input type="text" id="search" name="search"/>
+			</p>
 			<table width="595">
 				<tr class="table-header">
 					<th width="230" scope="col"><div align="left">Region No</div></th>
@@ -18,9 +20,9 @@
 				</tr>
 				{% for region in regions %}
 					<tr>
-						<td><a href="{% url region-details region.id %}">{{ region.pk }}</a></td>
-						<td><a href="{% url region-details region.id %}">{{ region.name }}</a></td>
-						<td><a href="{% url zone-region-add region.id %}">Add a Zone</a></td>
+						<td><a href="{% url region-details region.pk %}">{{ region.pk }}</a></td>
+						<td><a href="{% url region-details region.pk %}">{{ region.name }}</a></td>
+						<td><a href="{% url zone-region-add region.pk %}">Add a Zone</a></td>
 					</tr>
 				{% endfor %}
 			</table>

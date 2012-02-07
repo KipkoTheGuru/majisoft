@@ -1,0 +1,74 @@
+{% extends "base_settings.html" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#delete-link").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url subzone-delete subzone.id %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url subzone-list %}");
+					  }
+				});
+				return false;
+			});
+		});
+	</script>
+{% endblock extrajs %}
+
+<title>{% block title %} {{ subzone.name }} | Details {% endblock title%} |</title>
+
+<div class="main-col">
+	{% block main_column %}
+		<div align="center"><h1 class="module-header">Settings Module</h1></div>
+		<div class="shadow">
+            <h1>{{ subzone.name }} Zone
+				<a href="{% url subzone-edit subzone.id %}" class="linkbutton">
+                	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Sub-Zones</div>
+                </a>
+			</h1>
+            <div class="form-capsule">
+            	<div class="form-row">
+        			<p>
+        				<label>Region:</label><a href="{% url region-details subzone.zone.region.pk %}">{{ subzone.zone.region.name }}</a>
+    				</p>
+    				<p>
+        				<label>Zone:</label><a href="{% url zone-details subzone.zone.pk %}">{{ subzone.zone.name }}</a>
+    				</p>
+        		</div>
+            	<div class="form-row">
+            		<p><label>Description:</label> </p><br /><br />
+        			<div class="description"><p>{{ subzone.description }}</p></div>
+        		</div>
+				{% if plots %}
+				<div class="form-row">
+                	<div align="center"><h2 class="application">All Plots under this Sub-Zone</h2></div>
+                	<table>
+                		<tr class="table-header">
+							<th scope="col" width="285"><div align="left">Plot No</div></th>
+							<th scope="col" width="285">Landlord</th>
+						</tr>
+						{% for plot in plots %}
+							<tr>
+								<td><a href="{% url plot-details plot.pk %}">{{ plot.plot_no }}</a></td>
+								<td><a href="{% url landlord-details plot.landlord.pk %}" style="margin-left: 5px;">{{ plot.landlord.full_name }}</a></td>
+							</tr>
+						{% endfor %}
+                    </table>
+                </div>
+                {% else %}
+                	<div class="form-row">
+            			<p><strong>There are no sub-zones in this zone. Click on the Add Sub-Zone link above to add a new sub-zone</strong></p>
+            		</div>
+                {% endif %}
+			</div>
+        </div>
+        {% if not plots %}
+			<div id="deleterow" class="shadow">
+				<p><a href="#" id="delete-link"><img src="{{ MEDIA_URL }}images/icons/icon_deletelink.gif" /><strong> Delete</strong> </a></p>
+			</div>
+		{% endif %}
+	{% endblock main_column %}
+</div>	

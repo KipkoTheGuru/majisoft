@@ -19,18 +19,24 @@
             	{% block navigation %}
 	            	<li><a href="/">Home</a></li>
 	                <li><a href="{% url consumer-list %}">Consumers</a></li>
-	                <li><a href="#">Billing</a></li>
+	                <li>
+	                	<a href="#">Billing</a>
+	                	<ul>
+	                		<li><a href="{% url payment-make %}">Make Payment</a></li>
+                		</ul>
+                	</li>
 	                <li><a href="#">Readings</a></li>
 	                <li><a href="#">Reports</a></li>
 	                <li>
 	                	<a href="#">Configuration</a>
 	                	<ul>
-	                		<li><a href="#">Users</a></li>
 	                		<li><a href="{% url landlord-list %}">Landlords</a></li>
 	                		<li><a href="{% url plot-list %}">Plots</a></li>
 	                		<li><a href="{% url region-list %}">Regions</a></li>
 	                		<li><a href="{% url zone-list %}">Zones</a></li>
 	                		<li><a href="{% url subzone-list %}">Sub-zones</a></li>
+	                		<li><a href="{% url fee-list %}">Fees and Charges</a></li>
+	                		<li><a href="{% url payment-mode-list %}">Payment Modes</a></li>
 	                	</ul>
                 	</li>
                 {% endblock navigation%}

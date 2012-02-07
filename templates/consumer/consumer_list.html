@@ -3,25 +3,37 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
-		<table width="595">
-			<tr class="table-header">
-				<th width="230" scope="col"><div align="left">Consumer</div></th>
-				<th width="160" scope="col">Address</th>
-				<th width="187" scope="col">Consumer Type</th>
-				<th></th>
-			</tr>
-			{% for customer in consumers %}
-				<tr>
-					{% if customer.company_name %}
-						<td><a href="{{ customer.get_absolute_url }}">{{ customer.company_name }}</a></td>
-					{% else %}
-						<td><a href="{{ customer.get_absolute_url }}">{{ customer.full_name }}</a></td>
-					{% endif %}
-					<td>{{ customer.full_address}}</td>
-					<td>{{ customer.consumer_type.consumer_type }}</td>
-					<td><a href="{% url application-add customer.id %}">New Application</a></td>
-				</tr>
-			{% endfor %}
-		</table>
+		<h1>List of Consumers:</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<p><a href="{% url consumer-type %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Consumer</a></p>
+			</div>
+			<p>
+				<label for="search">Search</label>
+				<input type="text" id="search" name="search"/>
+			</p>
+			<div class="form-row">
+				<table width="595">
+					<tr class="table-header">
+						<th width="230" scope="col"><div align="left">Consumer</div></th>
+						<th width="160" scope="col">Address</th>
+						<th width="187" scope="col">Consumer Type</th>
+						<th></th>
+					</tr>
+					{% for customer in consumers %}
+						<tr>
+							{% if customer.company_name %}
+								<td><a href="{{ customer.get_absolute_url }}">{{ customer.company_name }}</a></td>
+							{% else %}
+								<td><a href="{{ customer.get_absolute_url }}">{{ customer.full_name }}</a></td>
+							{% endif %}
+							<td>{{ customer.full_address}}</td>
+							<td>{{ customer.consumer_type.consumer_type }}</td>
+							<td><a href="{% url application-add customer.id %}">New Application</a></td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>
+		</div>
 	</div>
 {% endblock main_column %}

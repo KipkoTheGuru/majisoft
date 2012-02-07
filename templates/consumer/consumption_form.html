@@ -1,0 +1,42 @@
+{% extends "base_consumer.html" %}
+
+{% block extrajs %}
+
+{% endblock extrajs %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>
+			{% if consumption %}
+				Edit Rate for {{ consumption.consumer_type.consumer_type }}
+			{% else %}
+				Add Rate for {{ consumertype.consumer_type  }} 
+			{% endif %}
+		</h1>
+		<div class="form-capsule">
+			<form action="" method="post" >
+				{% csrf_token %}
+				{% for field in consumptionForm %}
+				<div class="form-row">
+					{% if field.errors %}
+						<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
+					{% endif %}
+					<p>{{ field.label_tag }}: {{ field }}</p>
+					{% if field.errors %}
+						<p>{{ field.errors }}</p></div>
+					{% endif %}
+				</div>
+				{% endfor %}
+				<div class="submit-row" align="center">
+                	<input type="submit" value="Save" class="btn-save" name="save"/>
+                </div>
+			</form>
+		</div>
+	</div>
+	{% if consumption %}
+		<div id="deleterow" class="shadow">
+			<p><a href="#" id="delete-link"><img src="{{ MEDIA_URL }}images/icons/icon_deletelink.gif" /><strong> Delete</strong> </a></p>
+		</div>
+	{% endif %}
+{% endblock main_column %}

@@ -1,0 +1,76 @@
+{% extends "base_consumer.html" %}
+
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$("#delete-link").click(function(){
+				$.ajax({
+					  type: 'POST',
+					  url: "{% url consumer-type-delete consumertype.id %}",
+					  data: {},
+					  success:function(){
+					  	window.location.replace("{% url consumer-type-list %}");
+					  }
+				});
+				return false;
+			});
+		});
+	</script>
+{% endblock extrajs %}
+
+<title>{% block title %} {{ block.super }} | Details {% endblock title%} |</title>
+
+<div class="main-col">
+	{% block main_column %}
+		<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+		<div class="shadow">
+            <h1>{{ consumertype.consumer_type }}
+				<a href="{% url consumer-type-edit consumertype.id %}" class="linkbutton">
+                	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit</div>
+                </a>
+			</h1>
+            <div class="form-capsule">
+            	<div class="form-row">
+    				<p><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /><a href="{% url consumption-add consumertype.pk %}">Add Rate</a></p>
+            	</div>
+				{% if rates %}
+					<div class="form-row">
+	                	<div align="center"><h2 class="application">Current Consumption Rates</h2></div>
+	                	<table>
+	                		<tr>
+	                			<th width="185">Unit Range (m<sup>3</sup>)</th>
+	                			<th width="185">Water (Ksh.)</th>
+	                			<th width="185">Sewerage (Ksh.)</th>
+	                		</tr>
+	                        {% for rate in rates %}
+	                        	<tr>
+	                        		<td>
+	                        			<div align="center"><a href="{% url consumption-edit rate.id %}">
+	                        				{% if forloop.first %}
+	                        					0 - {{ rate.max_unit }}
+                        					{% else %}
+                        						{{ rate.max_unit }}
+                        					{% endif %}</a>
+                        				</div>
+                    				</td>
+	                				<td><div align="center">{{ rate.water }}</div></td>
+	                				<td><div align="center">{{ rate.sewerage }}</div></td>
+	                        	</tr>
+	                        {% endfor %}
+	                    </table>
+	                </div>
+                {% else %}
+                <div class="form-row">
+                	<p><strong>This consumer type has not yet been allocated consumer rates. Click on the Add Rates button to add new rates</strong></p>
+            	</div>
+                {% endif %}
+			</div>
+        </div>
+        
+        {% if not rates %}
+			<div id="deleterow" class="shadow">
+				<p><a href="#" id="delete-link"><img src="{{ MEDIA_URL }}images/icons/icon_deletelink.gif" /><strong> Delete</strong> </a></p>
+			</div>
+		{% endif %}
+	{% endblock main_column %}
+</div>	

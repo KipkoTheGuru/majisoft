@@ -5,7 +5,7 @@
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
-		<h1>Account Applications</h1>
+		<h1>{% if rejected_list %} Rejected {% endif %} Account Applications</h1>
 		<div class="form-capsule">
 			<table width="595">
 			<tr class="table-header">
@@ -14,17 +14,30 @@
 				<th width="140" scope="col">Consumer Type</th>
 			</tr>
 			{% if application_list %}
-			{% for application in application_list %}
-				<tr>
-					{% if customer.company_name %}
-						<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.company_name }}</a></td>
-					{% else %}
-						<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.full_name }}</a></td>
-					{% endif %}
-					<td>{{ application.plot_no.plot_location}}</td>
-					<td>{{ application.consumer.consumer_type.consumer_type }}</td>
-				</tr>
-			{% endfor %}
+				{% for application in application_list %}
+					<tr>
+						{% if customer.company_name %}
+							<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.company_name }}</a></td>
+						{% else %}
+							<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.full_name }}</a></td>
+						{% endif %}
+						<td>{{ application.plot_no.plot_location}}</td>
+						<td>{{ application.consumer.consumer_type.consumer_type }}</td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+			{% if rejected_list %}
+				{% for application in rejected_list %}
+					<tr>
+						{% if customer.company_name %}
+							<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.company_name }}</a></td>
+						{% else %}
+							<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.full_name }}</a></td>
+						{% endif %}
+						<td>{{ application.plot_no.plot_location}}</td>
+						<td>{{ application.consumer.consumer_type.consumer_type }}</td>
+					</tr>
+				{% endfor %}
 			{% endif %}
 		</table>
 		</div>
