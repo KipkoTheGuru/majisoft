@@ -7,11 +7,11 @@
 	    	<a href="/" style="text-decoration:none;"><img src="{{ MEDIA_URL }}images/logo2.png" /></a>
 	        <div class="header-details">
         	<ul>
-                <li><a href="#">Log-out</a></li>
+                <li><a href="{% url logout %}">Log-out</a></li>
                 <li> &nbsp | &nbsp </li>
                 <li><a href="#"> Manage Account</a> </li> 
                 <li> &nbsp | &nbsp </li>
-                <li><a> Welcome Eric </a> </li>        
+                <li><a> Welcome {{ user.first_name }} </a> </li>        
             </ul>
         </div>
         <div>
@@ -22,7 +22,7 @@
 	                <li>
 	                	<a href="#">Billing</a>
 	                	<ul>
-	                		<li><a href="{% url payment-make %}">Make Payment</a></li>
+	                		<li><a href="">Make Payment</a></li>
                 		</ul>
                 	</li>
 	                <li><a href="#">Readings</a></li>

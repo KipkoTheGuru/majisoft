@@ -1,6 +1,8 @@
 # Create your views here.
 from consumer.models import *
 from payments.models import *
+from django import forms
+from payments.models import *
 from django.shortcuts import get_object_or_404, render_to_response
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
@@ -69,6 +71,16 @@ def payment_mode (request, pk=None, action=None, template_name="payments/payment
 @login_required
 def payment(request, pk=None, action=None, template_name="payments/payment_form.html"):
     data = {}
+    if pk:
+        class PaymentForm(forms.ModelForm):
+            class Meta:
+                model = get_invoices(pk)
+                exclude = ["date_paid"]
     if request.method == "GET":
         if action in ("create", "read", "update"):
-            data['payment'] = get_object_or_404(PaymentMode, pk=pk)
+            if pk:
+                data['payment'] = get_object_or_404(Payment, pk=pk)
+                if action == "update":
+                    paymentForm = PaymentForm(instance=get_object_or_404(Payment, pk=pk))
+            else:
+                paymentForm = PaymentForm()

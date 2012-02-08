@@ -23,7 +23,7 @@ urlpatterns = patterns('',
     
     #URLs for Payments
     url(r'^payment/(?P<pk>[\d]+)/$', payment, {"action":"create"}, name='payment-make'),
-    """url(r'^payment-mode/details/(?P<pk>[\d]+)/$', payment_mode, {"action":"read", "template_name":"payments/payment_mode_details.html"}, name='payment-mode-details'),
-    url(r'^payment-mode/edit/(?P<pk>[\d]+)/$', payment_mode, {"action":"update"}, name='payment-mode-edit'),
-    url(r'^payment-mode/delete/(?P<pk>[\d]+)/$', payment_mode, {"action":"delete"}, name='payment-mode-delete'),"""
+    #url(r'^payment-mode/details/(?P<pk>[\d]+)/$', payment_mode, {"action":"read", "template_name":"payments/payment_mode_details.html"}, name='payment-mode-details'),
+    #url(r'^payment-mode/edit/(?P<pk>[\d]+)/$', payment_mode, {"action":"update"}, name='payment-mode-edit'),
+    #url(r'^payment-mode/delete/(?P<pk>[\d]+)/$', payment_mode, {"action":"delete"}, name='payment-mode-delete'),
 )

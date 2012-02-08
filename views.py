@@ -8,19 +8,19 @@ from consumer.models import Consumer
 
 @login_required
 def index(request):
-    return HttpResponseRedirect(reverse("home"))
+    return HttpResponseRedirect(reverse('home'))
 
 def login(request, *args, **kwargs):
     if not request.user.is_authenticated():
         return auth_login(request, *args, **kwargs)
     else:
-        return HttpResponseRedirect(reverse("home"))
+        return HttpResponseRedirect(reverse('home'))
 
 def logout(request, *args, **kwargs):
     if request.user.is_authenticated():
         return logout_then_login(request, *args, **kwargs)
     else:
-        return HttpResponseRedirect(reverse("login"))
+        return HttpResponseRedirect(reverse('login'))
 
-def search(request, object_name=None):
-    pass
+"""def search(request, object_name=None):
+    pass"""

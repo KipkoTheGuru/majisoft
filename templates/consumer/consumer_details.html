@@ -35,7 +35,10 @@
 			</h1>
             <div class="form-capsule">
             	<div class="form-row">
-					<p><a href="{% url application-add  consumer.pk %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Account</a></p>
+					<p>
+						<a href="{% url application-add  consumer.pk %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Account</a> | 
+						<a href="{% url payment-make  consumer.pk %}" class="links"> Make Payment</a>
+					</p>
 				</div>
             	<div class="form-row">
             		<p><label>Balance:</label> <a href="{% url consumer-financial-details consumer.id %}">

@@ -34,17 +34,7 @@ def invoice_account_installation(account):
             invoice_detail.save()
             sum += invoice_detail.fee * invoice_detail.quantity
         invoice.total = sum
-        invoice.save()
-
-def get_financial_history(invoices, payments):
-    if invoices.__len__() > payments.__len__():
-        x = invoices.__len__()
-    else:
-        x = payments.__len__()
-    financial_history = []
-    for i in range(x, 0, -1):
-        pass
-         
+        invoice.save()      
 
 @csrf_exempt
 def consumer(request, pk=None, action=None, consumer_type='domestic', template_name="consumer/consumer_details.html"):
