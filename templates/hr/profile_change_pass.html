@@ -1,0 +1,31 @@
+{% extends "base_profile.html" %}
+
+<title>{% block title %} {{ block.super }} | Details {% endblock title%} |</title>
+
+<div class="main-col">
+	{% block main_column %}
+		<div align="center"><h1 class="module-header">User-Profile</h1></div>
+		<div class="shadow">
+			<h1>{{ user.get_full_name }} ({{ user.username }})</h1>
+			<div class="form-capsule">
+            	<form action="" method="post" >
+					{% csrf_token %}
+					{% for field in form %}
+					<div class="form-row">
+						{% if field.errors %}
+							<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
+						{% endif %}
+						<p>{{ field.label_tag }}: {{ field }}</p>
+						{% if field.errors %}
+							<p>{{ field.errors }}</p></div>
+						{% endif %}
+					</div>
+					{% endfor %}
+					<div class="submit-row" align="center">
+	                	<input type="submit" value="Save" class="btn-save" name="save"/>
+	                </div>
+				</form>
+    		</div>
+		</div>
+	{% endblock main_column %}
+</div>	

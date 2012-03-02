@@ -9,12 +9,44 @@
 	<div class="shadow">
 		<h1>
 			{% if consumption %}
-				Edit Rate for {{ consumption.consumer_type.consumer_type }}
+				Edit Rate for <a href="{% url consumer-type-details consumption.consumer_type.pk %}">{{ consumption.consumer_type.consumer_type }}</a>
 			{% else %}
-				Add Rate for {{ consumertype.consumer_type  }} 
+				{% if consumertype %}
+					Add Rate for <a href="{% url consumer-type-details consumertype.pk %}">{{ consumertype.consumer_type  }}</a>
+				{% endif %} 
 			{% endif %}
 		</h1>
 		<div class="form-capsule">
+			<div class="form-row">
+				<table>
+					{% if consumption_rates %}
+	            		<tr>
+	            			<th width="185">Unit Range (m<sup>3</sup>)</th>
+	            			<th width="185">Water (Ksh.)</th>
+	            			<th width="185">Sewerage (Ksh.)</th>
+	            		</tr>
+	                    {% for min, rate in consumption_rates %}
+	                    	<tr>
+	                    		<td>
+	                    			<div align="center">
+	                    				{% if forloop.first %}
+                        					0 - {{ rate.max_unit }}
+                    					{% else %}
+                    						{% if rate.border_rate %}
+                    							{{ rate.max_unit }} <
+                							{% else %}
+                    							{{ min.max_unit }} - {{ rate.max_unit }}
+                							{% endif %}
+                    					{% endif %}
+	                				</div>
+	            				</td>
+	            				<td><div align="center">{{ rate.water }}</div></td>
+	            				<td><div align="center">{{ rate.sewerage }}</div></td>
+	                    	</tr>
+	                    {% endfor %}
+                    {% endif %}
+                </table>
+			</div>
 			<form action="" method="post" >
 				{% csrf_token %}
 				{% for field in consumptionForm %}

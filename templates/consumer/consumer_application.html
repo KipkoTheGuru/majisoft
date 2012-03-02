@@ -24,7 +24,7 @@
 					{% if field.errors %}
 						<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
 					{% endif %}
-					<p>{{ field.label_tag }}: {{ field }}</p>
+					<p>{{ field.label_tag }}: {{ field }} {% if forloop.first %}<a href="{% url plot-add-redirect %}"> New Plot</a> {% endif %}</p>
 					{% if field.errors %}
 						<p>{{ field.errors }}</p></div>
 					{% endif %}

@@ -1,0 +1,38 @@
+{% extends "base_consumer.html" %}
+
+<title>{% block title %} {{ block.super }}| Account {% endblock title%} |</title>
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
+	<div class="shadow">
+		<h1>Rejected Account Applications</h1>
+		<div class="form-capsule">
+			{% if rejected_list %}
+				<table width="595">
+				<tr class="table-header">
+					<th width="230" scope="col"><div align="left">Consumer</div></th>
+					<th width="200" scope="col">Plot Location</th>
+					<th width="140" scope="col">Consumer Type</th>
+				</tr>
+				{% for application in rejected_list %}
+					<tr>
+						{% if customer.company_name %}
+							<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.company_name }}</a></td>
+						{% else %}
+							<td><a href="{% url consumer-details application.consumer.id %}">{{ application.consumer.full_name }}</a></td>
+						{% endif %}
+						<td>{{ application.plot_no.plot_location}}</td>
+						<td>{{ application.consumer.consumer_type.consumer_type }}</td>
+					</tr>
+				{% endfor %}
+				</table>
+			{% else %}
+				<div class="form-row">
+					<div class="ui-state-error ui-corner-all" style="padding: 0 0.7em 0 0.7em">
+						<p>There company has no rejected account applications</p>
+					</div>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+{% endblock main_column %}

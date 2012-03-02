@@ -1,0 +1,47 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Finance Module</h1></div>
+	<div class="shadow">
+		<h1>Payment Details
+			<a href="" class="linkbutton">
+            	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Print Receipt</div>
+            </a>
+		</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<p>
+					Invoice details for account no: 
+					<a href="{% url account-details invoice.account.pk %}">
+						<strong>{{ invoice.account.account_no }}</strong>
+					</a> belonging to 
+					<a href="{% url consumer-details invoice.account.application.consumer.id %}">
+						<strong>{{ invoice.account.application.consumer.full_name }}</strong>
+					</a>
+				</p>
+			</div>
+			<div class="form-row">
+				<div align="center"><h2 class="application">Invoice Details</h2></div>
+				<table>
+					<tr>
+						<th>Fee Type</th>
+						<th>Fee Amount</th>
+						<th>Quantity</th>
+						<th>Total</th>
+					</tr>
+					{% for invoice_detail in invoice_details %}
+						<tr>
+							<td>{{ invoice_detail.fee_type }}</td>
+							<td>{{ invoice_detail.fee }}</td>
+							<td>{{ invoice_detail.quantity }}</td>
+							<td><strong>{{ invoice_detail.total }}</strong></td>
+						</tr>
+					{% endfor %}
+				</table>
+			</div>									
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

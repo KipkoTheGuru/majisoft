@@ -1,0 +1,16 @@
+{% extends "base_skeleton.html" %}
+
+<title>{% block title %} {{ block.super }} My Profile {% endblock title%} |</title>
+
+<div class="left-col">
+{% block left_col %}
+	<ul>
+	        <li><a href="{% url profile-details %}"> View Details </a></li>
+			<li><a href="{% url profile-change-pass %}"> Change Password</a></li>
+	    </ul>
+{% endblock left_col %}
+</div>
+
+{% block right_column %}
+
+{% endblock right_column %}

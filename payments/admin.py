@@ -12,7 +12,7 @@ class FeeAdmin(admin.ModelAdmin):
     list_display = ["name", "fee", "fee_type", "description"]
 
 class PaymentAdmin(admin.ModelAdmin):
-    list_display = ["invoice", "amount_paid", "cheque_no", "payment_mode", "date_paid"]
+    list_display = ["account", "amount_paid", "cheque_no", "payment_mode", "date_paid"]
 
 class PaymentModeAdmin(admin.ModelAdmin):
     list_display = ["name", "description"]

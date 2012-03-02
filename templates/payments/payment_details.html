@@ -1,0 +1,38 @@
+{% extends "base_consumer.html" %}
+
+{% block main_column %}
+	<div align="center"><h1 class="module-header">Finance Module</h1></div>
+	<div class="shadow">
+		<h1>Payment Details
+			<a href="" class="linkbutton">
+            	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Print Receipt</div>
+            </a>
+		</h1>
+		<div class="form-capsule">
+			<div class="form-row">
+				<p>
+					Payment details for account no: 
+					<a href="{% url account-details payment.account.pk %}">
+						<strong>{{ payment.account.account_no }}</strong>
+					</a> belonging to 
+					<a href="{% url consumer-details payment.account.application.consumer.id %}">
+						<strong>{{ payment.account.application.consumer.full_name }}</strong>
+					</a>
+				</p>
+			</div>
+			<div class="form-row">
+				<p><label>Amount Paid</label> {{ payment.amount_paid }}</p>
+				{% if payment.cheque_no %}
+					<p><label>Cheque No:</label> {{ payment.cheque_no }}</p>
+				{% endif %}
+				{% if payment.cheque_no.lower != "cash" %}
+					<p><label>Payment Mode</label> {{ payment.payment_mode }}</p>
+				{% endif %}
+				<p><label>Date Paid</label> {{ payment.date_paid }}</p>
+			</div>									
+		</div>
+	</div>
+{% endblock main_column %}
+
+{% block right_column %}
+{% endblock right_column %}

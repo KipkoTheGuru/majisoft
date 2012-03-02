@@ -9,14 +9,17 @@
 				<p><a href="{% url region-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Region</a></p>
 			</div>
 			<p>
-				<label for="search">Search</label>
-				<input type="text" id="search" name="search"/>
+				<form method="get" action="{% url region-search %}">
+					<input type="text" id="search" name="search"/>
+					<input type="submit" value="search" />
+				</form>
 			</p>
+			<p>{% if query %} You searched for <strong> {{ query }} </strong>{% endif%}</p>
 			<table width="595">
 				<tr class="table-header">
-					<th width="230" scope="col"><div align="left">Region No</div></th>
+					<th width="200" scope="col"><div align="left">Region No</div></th>
 					<th width="230" scope="col">Region Name</th>
-					<th width="100" scope="col">No Of Consumers</th>
+					<th width="130" ></th>
 				</tr>
 				{% for region in regions %}
 					<tr>

@@ -1,4 +1,3 @@
-from django.db import models
 from django.contrib import admin
 from consumer.models import *
 

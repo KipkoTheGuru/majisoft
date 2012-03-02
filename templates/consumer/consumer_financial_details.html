@@ -1,5 +1,15 @@
 {% extends "base_consumer.html" %}
 
+{% block extrajs %}
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".financial-details tr").mouseover(function(){$(this).addClass("over");}).mouseout(function(){$(this).removeClass("over");});
+			$(".financial-details tr:even").addClass("alt");
+		})
+	</script>
+{% endblock extrajs %}
+<title>{% block title %} {{ block.super }} | Financial Details {% endblock title%} |</title>
+
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
@@ -11,35 +21,55 @@
 					{{ consumer.full_name }} 
 				{% endif %}
 			</a>
-			<a href="" class="linkbutton">
+			<a href="" target="_blank" class="linkbutton">
             	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Print History</div>
             </a>
 		</h1>
 		<div class="form-capsule">
 			<div class="form-row">
 				<div align="center"><h2 class="application">Financial History</h2></div>
+				<ul class="finance">
+					<li>
+						<div class="financial-details">
+							<div align="center"><h2 class="inactive">Invoices</h2></div>
+							<table class="finance-table" width="590">
+								{% for invoice in invoices %}
+									<tr><td width="280"><div align="right"><a href="{% url invoice-details invoice.pk %}">{{ invoice.total}}</a> - <i>{{invoice.date }}</i></div></td></tr>
+								{% empty %}
+									<tr><td width="280"><div align="right"><i>No invoices issued yet</i></div></td></tr>								
+								{% endfor %}
+							</table>
+						</div>
+					</li>
+					<li>
+						<div class="financial-details">
+							<div align="center"><h2 class="inactive">Payments</h2></div>
+							<table class="finance-table" width="590">
+								{% for payment in payments %}
+									<tr><td width="280"><div align="right"><a href="{% url payment-details payment.pk %}">{{ payment.amount_paid}}</a> - <i>{{payment.date_paid }}</i></div></td></tr>
+								{% empty %}
+									<tr><td width="280"><div align="right"><i>No payments made yet</i></div></td></tr>								
+								{% endfor %}
+							</table>
+						</div>
+					</li>
+				</ul>
 			</div>
-			<table>
-				<tr>
-					<th width="285">Invoices</th>
-					<th width="285">Payments</th>
-				</tr>
-				<tr>
-					{% for invoice in invoices %}
-						<td>{{ invoice.total }}  ({{ invoice.date }})</td>
-						<td>
-							<ul>{% if invoice.payment %}
-									{% for payment in invoice.payment %}
-										<li>{{ payment.amount_paid }} {{ payment.date_paid }}</li>
-									{% endfor %}
-								{% else %}
-								<i>Not Yet</i>
-								{% endif %}
-							</ul>
-						</td>
-					{% endfor %}
-				</tr>
-			</table>
+			<div class="form-row">
+				<div class="total">
+					<table class="finance-table" width="590">
+						<tr>
+							<td width="75"><div align="left"><strong>Total:</strong></div></td>
+							<td width="220"><div align="right"><strong>{{ invoice_total }}</strong></div></td>
+							<td width="295"><div align="right"><strong>{{ payment_total }}</strong></div></td>
+						</tr>
+						<tr >
+							<td width="295" colspan="2"><div align="right"><strong>Balance:</strong></div></td>
+							<td width="295"><div align="right"><strong>{{ balance }}</strong></div></td>
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
 {% endblock main_column %}

@@ -1,0 +1,20 @@
+{% extends "base_profile.html" %}
+
+<title>{% block title %} {{ block.super }} | Details {% endblock title%} |</title>
+
+<div class="main-col">
+	{% block main_column %}
+		<div align="center"><h1 class="module-header">User-Profile</h1></div>
+		<div class="shadow">
+			<h1>{{ user_details.full_name }} ({{ user_details.user.username }})</h1>
+			<div class="form-capsule">
+            	<div class="form-row">
+            		<p><label>National ID:</label> {{ user_details.national_id }}</p>
+            		<p><label>Phone No:</label> {{ user_details.phone_number }}</p>
+            		<p><label>Email:</label> {{ user_details.user.email }}</p>
+            		<p><label>Date Joined:</label> {{ user_details.user.date_joined }}</p>
+        		</div>
+    		</div>
+		</div>
+	{% endblock main_column %}
+</div>	

@@ -1,5 +1,9 @@
 {% extends "base_consumer.html" %}
 
+{% block extrajs %}
+
+{% endblock extrajs %}
+
 {% block main_column %}
 	<div align="center"><h1 class="module-header">Consumer Module</h1></div>
 	<div class="shadow">
@@ -9,9 +13,12 @@
 				<p><a href="{% url consumer-type %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Consumer</a></p>
 			</div>
 			<p>
-				<label for="search">Search</label>
-				<input type="text" id="search" name="search"/>
+				<form method="get" action="{% url consumer-search %}">
+					<input type="text" id="search" name="search"/>
+					<input type="submit" value="search" />
+				</form>
 			</p>
+			<p>{% if query %} You searched for <strong> {{ query }} </strong>{% endif%}</p>
 			<div class="form-row">
 				<table width="595">
 					<tr class="table-header">

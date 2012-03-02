@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+/* ------------------
+ styling for the tables 
+   ------------------   */
+
+
+body{line-height: 1.6em;}
+
+#hor-minimalist-a{font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size: 12px;background: #fff;margin: 45px;width: 480px; 
+border-collapse: collapse; text-align: left;}
+
+#hor-minimalist-a th{font-size: 14px;font-weight: normal;color: #039;padding: 10px 8px;border-bottom: 2px solid #6678b1;}
+#hor-minimalist-a td
+{
+	color: #669;
+	padding: 9px 8px 0px 8px;
+}
+#hor-minimalist-a tbody tr:hover td
+{
+	color: #009;
+}
+
+/*The CSS for my table*/
+#hor-minimalist-b{font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;font-size: 12px;background: #fff;width: 480px;
+border-collapse: collapse;text-align: left; margin-left: 5px; margin-bottom: 5px;}
+
+#hor-minimalist-b th{font-size: 14px;font-weight: normal;color: #039;padding: 10px 8px;border-bottom: 2px solid #6678b1;}
+
+#hor-minimalist-b td{border-bottom: 1px solid #ccc;color: #669;padding: 6px 8px;}
+
+#hor-minimalist-b tbody tr:hover td{color: #009;}
+/*End of the CSS that I use*/
+
+p{font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;}
+
+.Header{border: 2px solid #dddddd; background-color: #dddddd;}
+
+.Header h1{margin-left: 5px; color: #ffffff;}
+
+.sub-header{border: 2px solid #6678B1; background-color: #6678B1; border-bottom-right-radius: 30px; margin-bottom: 10px}
+
+.sub-header h3{margin-left: 5px; color: #ffffff; line-height: 8px; font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;}
+
+.meta-info{border-top: 2px solid #000000; border-bottom: 2px solid #000000; margin-bottom: 5px;}
+.meta-info p {line-height: 10px; font-size: 12px}
+
+.content{border: 1px solid #cccccc;}
+.footer{position: absolute; bottom: 0px; width: inherit}
+
+</style>
+
+{% block A4_css %}
+	<style type="text/css">
+	.A4-page{width: 680px; margin-left: auto; margin-right: auto;}
+	/* Uncomment this section to use this for landscape
+	 
+	.A4-page{width: 845px; margin-left: auto; margin-right: auto;}
+	
+	 * */
+	</style>	
+{% endblock A4_css %}
+</head>
+
+<body>
+	<div class="A4-page">
+    	<div class="Header">
+    		<h1>Majisoft Report</h1>
+		</div>
+		<div class="sub-header">
+			<h3>{% block sub_header %}Consumers List{% endblock sub_header %}</h3>
+		</div>
+		<div class="meta-info">
+			<p>{% block meta_info %} {% endblock meta_info %}</p>
+		</div>
+		<div class="content" align="center">
+			<table id="hor-minimalist-b" summary="Employee Pay Sheet">
+				<thead>
+					<tr>
+						{% block table_header %}
+					
+						{% endblock table_header %}
+					</tr>
+				</thead>
+				<tbody>
+					{% block table_content %}
+					
+					{% endblock table_content %}
+				</tbody>
+			</table>
+		</div>
+		<div class="footer meta-info" align="center">
+			
+		</div>
+	</div>
+</body>
+</html>

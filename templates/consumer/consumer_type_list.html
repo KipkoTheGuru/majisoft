@@ -6,8 +6,10 @@
 		<h1>Consumer Type List</h1>
 		<div class="form-capsule">
 			<p>
-				<label for="search">Search</label>
-				<input type="text" id="search" name="search"/>
+				<form method="get" action="{% url consumer-type-search %}">
+					<input type="text" id="search" name="search"/>
+					<input type="submit" value="search" />
+				</form>
 			</p>
 			<table>
 				{% for type in consumer_types %}

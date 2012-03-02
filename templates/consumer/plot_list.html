@@ -9,9 +9,12 @@
 				<p><a href="{% url plot-add %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Plot</a></p>
 			</div>
 			<p>
-				<label for="search">Search</label>
-				<input type="text" id="search" name="search"/>
+				<form method="get" action="{% url plot-search %}">
+					<input type="text" id="search" name="search"/>
+					<input type="submit" value="search" />
+				</form>
 			</p>
+			<p>{% if query %} You searched for <strong> {{ query }} </strong>{% endif%}</p>
 			<table>
 				<tr>
 					<th width="200" scope="col">Plot No</th>

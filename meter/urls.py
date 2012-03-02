@@ -30,6 +30,7 @@ urlpatterns = patterns('',
     url(r'^subzone/details/(?P<pk>[\d]+)/$', subzone, {"action":"R", "template_name":"meter/subzone_details.html"}, name='subzone-details'),
     url(r'^subzone/edit/(?P<pk>[\d]+)/$', subzone, {"action":"U"}, name='subzone-edit'),
     url(r'^subzone/delete/(?P<pk>[\d]+)/$', subzone, {"action":"D"}, name='subzone-delete'),
+    url(r'^subzone/search/$', subzone_search, name='subzone-search'),
     
     #URLs for Zones
     url(r'^zone/list/$', ListView.as_view(queryset=Zone.objects.all(), context_object_name='zones',
@@ -39,6 +40,7 @@ urlpatterns = patterns('',
     url(r'^zone/details/(?P<pk>[\d]+)/$', zone, {"action":"R", "template_name":"meter/zone_details.html"}, name='zone-details'),
     url(r'^zone/edit/(?P<pk>[\d]+)/$', zone, {"action":"U"}, name='zone-edit'),
     url(r'^zone/delete/(?P<pk>[\d]+)/$', zone, {"action":"D"}, name='zone-delete'),
+    url(r'^zone/search/$', zone_search, name='zone-search'),
     
     #URLs for Regions
     url(r'^region/list/$', ListView.as_view(queryset=Region.objects.all(), context_object_name='regions',
@@ -47,5 +49,10 @@ urlpatterns = patterns('',
     url(r'^region/details/(?P<pk>[\d]+)/$', region, {"action":"R", "template_name":"meter/region_details.html"}, name='region-details'),
     url(r'^region/edit/(?P<pk>[\d]+)/$', region, {"action":"U"}, name='region-edit'),
     url(r'^region/delete/(?P<pk>[\d]+)/$', region, {"action":"D"}, name='region-delete'),
+    url(r'^region/search/$', region_search, name='region-search'),
+    
+    #URLs for Meter-Readings
+    url(r'^meter-readings/add/$', meter_readings, {"action":"C"}, name='meter-readings-add'),
+    url(r'^meter-readings/uploaded/$', meter_readings, {"action":"R"}, name='uploaded-readings'),
 )
 

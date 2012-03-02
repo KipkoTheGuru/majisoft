@@ -31,25 +31,44 @@
 			</h1>
             <div class="form-capsule">
             	<div class="form-row">
-    				<p><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /><a href="{% url consumption-add consumertype.pk %}">Add Rate</a></p>
+    				<p>
+    					<a href="{% url consumption-add consumertype.id %}" id="dialog_link">
+    						<img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" />Add Rate
+						</a>
+						{% if not last_rate.border_rate %}
+							&nbsp &nbsp &nbsp| &nbsp &nbsp
+							<a href="{% url consumption-set consumertype.id 1 %}" id="dialog_link">
+	    						Set Upper Boundary Rate
+							</a>
+						{% endif %}
+					</p>
             	</div>
 				{% if rates %}
 					<div class="form-row">
-	                	<div align="center"><h2 class="application">Current Consumption Rates</h2></div>
+	                	<div align="center"><h2 class="application">Current {{ consumertype.consumer_type }} Consumption Rates</h2></div>
 	                	<table>
 	                		<tr>
 	                			<th width="185">Unit Range (m<sup>3</sup>)</th>
 	                			<th width="185">Water (Ksh.)</th>
 	                			<th width="185">Sewerage (Ksh.)</th>
 	                		</tr>
-	                        {% for rate in rates %}
+	                        {% for min, rate in rates %}
 	                        	<tr>
 	                        		<td>
-	                        			<div align="center"><a href="{% url consumption-edit rate.id %}">
+	                        			<div align="center">
+	                        				{% if rate.border_rate %}
+	                        				<a href="{% url consumption-border-edit rate.id 1 %}">
+                        					{% else %}
+                        					<a href="{% url consumption-edit rate.id %}">
+                        					{% endif %}
 	                        				{% if forloop.first %}
 	                        					0 - {{ rate.max_unit }}
                         					{% else %}
-                        						{{ rate.max_unit }}
+                        						{% if rate.border_rate %}
+                        							{{ rate.max_unit }} <
+                    							{% else %}
+                        							{{ min.max_unit }} - {{ rate.max_unit }}
+                    							{% endif %}
                         					{% endif %}</a>
                         				</div>
                     				</td>

@@ -29,15 +29,14 @@
             	{% else %}
 					{{ consumer.full_name }} 
 				{% endif %}
-				<a href="{% url consumer-edit consumer.consumer_type.consumer_type.lower consumer.id %}" class="linkbutton">
+				<a href="{% url consumer-edit consumer.consumer_type.pk consumer.id %}" class="linkbutton">
                 	<div align="center"><img src="{{ MEDIA_URL }}images/icons/icon_changelink.gif" />Edit Consumer</div>
                 </a>
 			</h1>
             <div class="form-capsule">
             	<div class="form-row">
 					<p>
-						<a href="{% url application-add  consumer.pk %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Account</a> | 
-						<a href="{% url payment-make  consumer.pk %}" class="links"> Make Payment</a>
+						<a href="{% url application-add  consumer.pk %}" class="links"><img src="{{ MEDIA_URL }}images/icons/icon_addlink.gif" /> New Account</a> 
 					</p>
 				</div>
             	<div class="form-row">
@@ -79,8 +78,9 @@
                 		<tr>
                 			<th>Account No</th>
                 			<th>Sub-zone</th>
-                			<th>Plot No</th>
-                			<th>Last Activated</th>
+                			<th>Balance</th>
+                			<th>Last (Re-)Activated</th>
+                			<th></th>
                 		</tr>
                         {% for account in active_accounts %}
                         	<tr>
@@ -90,8 +90,9 @@
                         			</a>
                         		</td>
                 				<td>{{ account.application.plot_no.sub_zone }}</td>
-                				<td>{{ account.application.plot_no.plot_no }}</td>
+                				<td><strong>{{ account.account_balance }}</strong></td>
                 				<td>{{ account.date_activated }}</td>
+                				<td><a href="{% url payment-make account.pk %}">Make Payment</a></td>
                         	</tr>
                         {% endfor %}
                     </table>
@@ -104,8 +105,9 @@
                     	<tr>
                     		<th>Account No</th>
                 			<th>Sub-zone</th>
-                			<th>Plot No</th>
-                			<th>Last Activated</th>
+                			<th>Balance</th>
+                			<th>Last (Re-)Activated</th>
+                			<th></th>
                     	</tr>
                     	{% for account in inactive_accounts %}
                         	<tr>
@@ -115,8 +117,15 @@
                         			</a>
                         		</td>
                 				<td>{{ account.application.plot_no.sub_zone }}</td>
-                				<td>{{ account.application.plot_no.plot_no }}</td>
-                				<td>{{ account.date_activated }}</td>
+                				<td><strong>{{ account.account_balance }}</strong></td>
+                				<td>
+                					{% if account.date_activated %}
+                						{{ account.date_activated }}
+                					{% else %}
+                						Not Yet
+                					{% endif %}
+            					</td>
+            					<td><a href="{% url payment-make account.pk %}">Make Payment</a></td>
                         	</tr>
                     	{% endfor %}
                     </table>
@@ -154,8 +163,9 @@
                 		<tr>
                 			<th>Account No</th>
                 			<th>Location</th>
-                			<th>Plot No</th>
+                			<th>Balance</th>
                 			<th width="115">Date Closed</th>
+                			<th></th>
                 		</tr>
                 	{% for suspension in suspended_accounts %}
                         	<tr>
@@ -165,8 +175,9 @@
                         			</a>
                         		</td>
                 				<td>{{ suspension.application.plot_no.plot_location }}</td>
-                				<td>{{ suspension.application.plot_no.plot_no }}</td>
+                				<td><strong>{{ suspension.account_balance }}</strong></td>
                 				<td>{{ suspension.date_closed }}</td>
+                				<td><a href="{% url payment-make suspension.pk %}">Make Payment</a></td>
                         	</tr>
                     	{% endfor %}
                     	</table>

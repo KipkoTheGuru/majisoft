@@ -8,13 +8,11 @@ class Invoice(models.Model):
     
     class Meta:
         db_table = "Invoice"
-        
-    def __unicode__(self):
-        return "%s" % self.account
 
 class InvoiceDetail(models.Model):
     invoice_id = models.ForeignKey("Invoice", blank=True, null = True)
     fee = models.DecimalField(max_digits=10, decimal_places=2)
+    fee_type = models.ForeignKey("Fee", blank=True, null = True)
     quantity = models.IntegerField(default = 1)
     total = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null = True)
     
@@ -48,7 +46,7 @@ class Fee(models.Model):
                 return "%s" % feetype.__getitem__(1)
 
 class Payment(models.Model):
-    invoice = models.ForeignKey("Invoice")
+    account = models.ForeignKey(Account)
     amount_paid = models.DecimalField(max_digits=10, decimal_places=2)
     cheque_no = models.CharField(max_length=100, blank=True, null = True)
     payment_mode = models.ForeignKey("PaymentMode")
@@ -63,4 +61,6 @@ class PaymentMode(models.Model):
     
     class Meta:
         db_table = "PaymentMode"
-        
+    
+    def __unicode__(self):
+        return "%s" % (self.name)

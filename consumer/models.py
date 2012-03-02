@@ -57,12 +57,15 @@ class Consumer(models.Model):
 
 class Consumption(models.Model):
     consumer_type  = models.ForeignKey("ConsumerType")
-    max_unit = models.IntegerField(max_length=50)
+    max_unit = models.IntegerField(max_length=10)
+    border_rate = models.BooleanField(default=False)
     water = models.DecimalField("Water (Ksh. per unit)", max_digits=10, decimal_places=2)
-    sewerage = models.DecimalField(max_digits=10, decimal_places=2)
+    sewerage = models.DecimalField(max_digits=10, decimal_places=2, blank=True, null = True)
     class Meta:
         db_table = "Consumption"
         ordering = ["max_unit"]
+    def __unicode__(self):
+        return "%f." % self.max_unit
         
 class ConsumerType(models.Model):
     consumer_type = models.CharField(max_length=50)

@@ -8,3 +8,8 @@ class FeeForm(forms.ModelForm):
 class PaymentModeForm(forms.ModelForm):
     class Meta:
         model = PaymentMode
+
+class PaymentForm(forms.ModelForm):
+    class Meta:
+        model = Payment
+        exclude = ["account", "date_paid"]

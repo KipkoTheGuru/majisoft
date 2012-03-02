@@ -9,24 +9,33 @@
         	<ul>
                 <li><a href="{% url logout %}">Log-out</a></li>
                 <li> &nbsp | &nbsp </li>
-                <li><a href="#"> Manage Account</a> </li> 
+                <li><a href="{% url profile-details %}"> Manage Account</a> </li> 
                 <li> &nbsp | &nbsp </li>
-                <li><a> Welcome {{ user.first_name }} </a> </li>        
+                <li><a> Welcome {{ user.first_name }} {{ user.pk }}</a> </li>        
             </ul>
         </div>
         <div>
             <div class="navigation shadow">
             	{% block navigation %}
 	            	<li><a href="/">Home</a></li>
-	                <li><a href="{% url consumer-list %}">Consumers</a></li>
+	                <li>
+	                	<a href="#">Consumer Module</a>
+	                	<ul>
+	                		<li><a href="{% url consumer-list %}">Consumers</a></li>
+	                		<li><a href="{% url consumer-type-list %}">Consumer Types</a></li>
+	                		<li><a href="{% url application-list %}">Account Applications</a></li>
+	                	</ul>
+                	</li>
+	                <li><a href="{% url meter-readings-add %}">Readings</a></li>
 	                <li>
 	                	<a href="#">Billing</a>
-	                	<ul>
-	                		<li><a href="">Make Payment</a></li>
-                		</ul>
                 	</li>
-	                <li><a href="#">Readings</a></li>
-	                <li><a href="#">Reports</a></li>
+	                <li>
+	                	<a href="{% url report-index %}">Reports</a>
+	                	<ul>
+	                		<li><a href="{% url report-active-accounts %}" target="_blank">Active Account</a></li>
+	                	</ul>
+                	</li>
 	                <li>
 	                	<a href="#">Configuration</a>
 	                	<ul>

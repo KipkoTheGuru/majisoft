@@ -1,0 +1,25 @@
+{% extends "reports/report.html" %}
+
+{% block sub_header %}List of Active accounts{% endblock sub_header %}
+
+{% block meta_info %} Report valid as of {{ date }} {% endblock meta_info %}
+
+{% block table_header %}
+	<th scope="col">Account No</th>
+	<th scope="col">Account Holder</th>
+	<th scope="col">Meter No</th>
+	<th scope="col">Plot No</th>
+	<th scope="col">Balance</th>
+{% endblock table_header %}
+
+{% block table_content %}
+	{% for active_account in active_accounts %}
+		<tr>
+			<td>{{ active_account.account_no }}</td>
+			<td>{{ active_account.application }}</td>
+			<td>{{ active_account.meter_no.serial_no }}</td>
+			<td>{{ active_account.application.plot_no }}</td>
+			<td>{{ active_account.account_balance }}</td>
+		</tr>
+	{% endfor %}
+{% endblock table_content %}

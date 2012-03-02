@@ -38,7 +38,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 
 .header-details li a{color:#009FC2;}
 
-.navigation{font-size:14px; padding: 2px 6px 2px; display:block; list-style-type:none; height:26px; margin-left:auto; margin-right:auto; background-color:#009FC2; }
+.navigation{font-size:14px; display:block; list-style-type:none; height:26px; margin-left:auto; margin-right:auto; background-color:#009FC2; }
 
 .navigation li{float: left;position: relative;list-style: none;}
 
@@ -54,7 +54,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 /*drop-down effect*/
 .navigation li:hover>ul{ display:block;}
 
-.navigation ul{display:none; margin: 0;	padding: 0; width:200px; position:absolute; top:22px; left:0; background-color:#009FC2; border: solid 1px #b4b4b4; border-radius: 8px; z-index:9999; border-radius : 4px;-moz-border-radius : 4px;
+.navigation ul{display:none; margin: 0;	padding: 0; width:200px; position:absolute; top:20px; left:0; background-color:#009FC2; border: solid 1px #b4b4b4; border-radius: 8px; z-index:9999; border-radius : 4px;-moz-border-radius : 4px;
 -webkit-border-radius: 4px;}
 
 .navigation ul li{float: none; margin: 0; padding: 0;}
@@ -73,7 +73,7 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .right-col{float:right; min-height:400px; width:220px; float:left; margin-left:5px; border:#AAAAAA solid 1px; margin-top:40px; -webkit-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px; moz-box-shadow:rgba(0,0,0,0.496094) 0px 1px 3px 0px;}
 
 .left-col ul, .right-col ul{margin-top:36px;}
-.left-col ul li a, .right-col ul li a{color:#009FC2; font-size:14px; font-weight:bold; text-decoration:none; float:right; width:inherit; margin-right:10px; width: 190px;}
+.left-col ul li a, .right-col ul li a{color:#009FC2; font-size:14px; font-weight:bold; text-decoration:none; float:left; width:inherit; margin-left:10px; min-width: 190px;}
 .right-col ul li a{float:left; margin-left: 20px;}
 .left-col ul li, .right-col ul li{line-height:28px; list-style-type: none;}
 .left-col ul li:hover a, .right-col ul li:hover a{background-color:#999999; width:200px; color:#ffffff;}
@@ -101,11 +101,11 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .form-capsule{margin:10px 0 5px 0; border-top:#bbbbbb solid 1px;}
 .form-capsule table {min-width: 590px;margin-left: 5px;}
 .form-capsule fieldset{border: #009FC2 solid 1px; margin-top: 5px;}
-.form-row{font-size:12px; border-bottom:#dddddd solid 1px;}
+.form-row{font-size:12px; border-bottom:#dddddd solid 1px; overflow:auto;}
 .required{font-weight:bold;}
 .form-row {min-height: 30px;}
 .form-row div{margin:10px;}
-.form-row label{width:150px; float:left; height:auto;}
+.form-row label{min-width:150px; float:left; height:auto;}
 .form-row input, .form-row select{margin-left:10px;}
 .form-row p label{font-weight:bold; margin-right: 5px; overflow-y:hidden;}
 .form-row p{line-height: 30px;}
@@ -113,6 +113,15 @@ input.input-text:focus, textarea:focus { outline: none; border-color: #999; colo
 .form-row table{margin-bottom: 10px; margin-left: auto; margin-right: auto;}
 .form-row table a{margin-left: 5px;}
 .description p{margin-left: 50px;}
+.form-row .finance{list-style-type:none;}
+.form-row .finance li {float:left; width: 295px; position: relative;}
+.financial-details td {max-width: 290px; }
+/*Zebra table*/
+.financial-details tr .alt{ background: #ecf6fc;}
+.financial-details tr .over, tr:hover{ background: #bcd4ec;}
+
+.readings-info ul{margin-bottom: 20px;}
+.readings-info ul li{margin-left: 50px; line-height: 18px; }
 
 .submit-row{margin-top:10px; border-top:#aaaaaa solid 1px; line-height: 36px;}
 .main-col .shadow {}

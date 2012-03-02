@@ -1,16 +1,17 @@
 # Create your views here.
-from consumer.models import *
+from meter.models import *
 from payments.models import *
 from django import forms
 from payments.models import *
+from payments.forms import *
 from django.shortcuts import get_object_or_404, render_to_response
 from django.contrib.auth.decorators import login_required
 from django.db.models import Count
 from django.template.context import RequestContext
-from payments.forms import *
 from django.http import *
 from django.core.urlresolvers import reverse
 from django.core import serializers
+from hr.helper import checkCredentials 
 
 @login_required
 def fee(request, pk=None, action=None, template_name="payments/fee_form.html"):
@@ -38,7 +39,10 @@ def fee(request, pk=None, action=None, template_name="payments/fee_form.html"):
             fee.delete()
     if action in ("create", "update"):
         data['feeForm'] = feeForm
-    return render_to_response(template_name, data, context_instance=RequestContext(request))
+    if checkCredentials(request):
+        return HttpResponseRedirect(reverse('meter-readings-add'))
+    else:
+        return render_to_response(template_name, data, context_instance=RequestContext(request))
 
 @login_required
 def payment_mode (request, pk=None, action=None, template_name="payments/payment_mode_form.html"):
@@ -66,21 +70,50 @@ def payment_mode (request, pk=None, action=None, template_name="payments/payment
             paymentMode.delete()
     if action in ("create", "update"):
         data['paymentModeForm'] = paymentModeForm
-    return render_to_response(template_name, data, context_instance=RequestContext(request))
+    if checkCredentials(request):
+        return HttpResponseRedirect(reverse('meter-readings-add'))
+    else:
+        return render_to_response(template_name, data, context_instance=RequestContext(request))
 
 @login_required
-def payment(request, pk=None, action=None, template_name="payments/payment_form.html"):
+def payment(request, pk=None, account=None, action=None, template_name="payments/payment_form.html"):
     data = {}
-    if pk:
-        class PaymentForm(forms.ModelForm):
-            class Meta:
-                model = get_invoices(pk)
-                exclude = ["date_paid"]
+    if account:
+        data['account'] = get_object_or_404(Account, pk=account)
     if request.method == "GET":
-        if action in ("create", "read", "update"):
+        if action in ("create", "read"):
             if pk:
                 data['payment'] = get_object_or_404(Payment, pk=pk)
-                if action == "update":
-                    paymentForm = PaymentForm(instance=get_object_or_404(Payment, pk=pk))
             else:
                 paymentForm = PaymentForm()
+    elif request.method == "POST":
+        if action == "create":
+            paymentForm = PaymentForm(request.POST)
+            if paymentForm.is_valid():
+                payment = paymentForm.save(commit=False)
+                payment.account = get_object_or_404(Account, pk=account)
+                payment.save()
+                return HttpResponseRedirect(reverse("payment-details", args=[payment.pk]))
+    if action == "create":
+        data['paymentForm'] = paymentForm
+    if checkCredentials(request):
+        return HttpResponseRedirect(reverse('meter-readings-add'))
+    else:
+        return render_to_response(template_name, data, context_instance=RequestContext(request))
+
+@login_required
+def invoice(request, pk=None, account=None, action=None, template_name="payments/invoice_form.html"):
+    data = {}
+    if account:
+        data['account'] = get_object_or_404(Account, pk=account)
+    if request.method == "GET":
+        if action in ("create", "read"):
+            if pk:
+                data['invoice'] = get_object_or_404(Invoice, pk=pk)
+                data['invoice_details'] = data['invoice'].invoicedetail_set.all()
+    elif request.method == "POST":
+        pass
+    if checkCredentials(request):
+        return HttpResponseRedirect(reverse('meter-readings-add'))
+    else:
+        return render_to_response(template_name, data, context_instance=RequestContext(request))

@@ -20,10 +20,15 @@ class ConsumerTypeForm(forms.ModelForm):
     class Meta:
         model = ConsumerType 
 
-class ConsumptionForm(forms.ModelForm):
+class NormConsumptionForm(forms.ModelForm):
     class Meta:
         model = Consumption
-        exclude = ["consumer_type"]
+        exclude = ["consumer_type", "border_rate"]
+        
+class BoundaryRateForm(forms.ModelForm):
+    class Meta:
+        model = Consumption
+        exclude = ["consumer_type", "border_rate", "max_unit"]
         
 class ApplicationForm(forms.ModelForm):
     class Meta:
